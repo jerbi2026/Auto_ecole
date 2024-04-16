@@ -131,10 +131,15 @@ AutoEcole : Représente l'auto-école. Elle ne possède aucun attribut.
 
 #### Les relations entre les classes sont les suivantes :
 
-Association entre Personne et Cours : Une personne peut être inscrite à plusieurs cours.
-Association entre Instructeur et Cours : Un instructeur peut donner plusieurs cours.
-Association entre Eleve et Evaluation : Un élève peut être évalué plusieurs fois.
-Association entre Cours et Ressources : Un cours peut utiliser plusieurs ressources pédagogiques.
+##### Association entre Personne et Cours :
+Une personne peut être inscrite à plusieurs cours.
+##### Association entre Instructeur et Cours :
+Un instructeur peut donner plusieurs cours.
+##### Association entre Eleve et Evaluation :
+Un élève peut être évalué plusieurs fois.
+##### Association entre Cours et Ressources :
+Un cours peut utiliser plusieurs ressources pédagogiques.
+##### remarque
 Les classes GestionnaireEleve, GestionnaireInstructeur, GestionnaireEval et AutoEcole représentent des gestionnaires de classes. Elles fournissent des méthodes pour gérer les instances des classes correspondantes.
 
 #### Exemple d'utilisation
