@@ -33,10 +33,11 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 
 ## Conception 🧑🏻‍🎤: 
-![admin](https://github.com/jerbi2026/Auto_ecole/assets/116197682/43357256-7637-4af7-a45c-11de7142c074)
-![Internaute](https://github.com/jerbi2026/Auto_ecole/assets/116197682/9751be14-ceed-43fc-a0a9-1d5b2f58981a)
-![instructeur](https://github.com/jerbi2026/Auto_ecole/assets/116197682/1acc2203-0685-4d96-b2c8-7ef9b61467dd)
-![Eléve](https://github.com/jerbi2026/Auto_ecole/assets/116197682/9bde30bb-68e3-4d35-9802-d8401429a6a9)
+![Internaute](https://github.com/jerbi2026/Auto_ecole/assets/116197682/41677b2c-a873-4b01-ba91-0c24833eb5f2)
+![Eléve](https://github.com/jerbi2026/Auto_ecole/assets/116197682/0b0e8393-32c5-42c7-96ef-f4e95a0f3298)
+![instructeur](https://github.com/jerbi2026/Auto_ecole/assets/116197682/88dde3b9-77b5-41e1-b6e1-ca023bcfb4f1)
+![admin](https://github.com/jerbi2026/Auto_ecole/assets/116197682/5787fc00-2e1f-4800-ab2c-be937c75bcaa)
+
 
 ## Planification du premier sprint
 
