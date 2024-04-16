@@ -1,0 +1,34 @@
+@startuml
+
+participant GestionnaireCompte
+participant ApplicationWeb
+participant SystemeGestionEcoleDeConduite
+
+Internaute->ApplicationWeb: accederSiteWeb()
+ApplicationWeb->SystemeGestionEcoleDeConduite: requetePageHome()
+SystemeGestionEcoleDeConduite->ApplicationWeb: recupererPageHome(pageHome)
+ApplicationWeb->Internaute: envoyerPageHome(pageHome)
+
+alt
+    Internaute->ApplicationWeb: consulterInformationsAutoEcole(idAutoEcole)
+    ApplicationWeb->SystemeGestionEcoleDeConduite: requeteInformationsAutoEcole(idAutoEcole)
+    SystemeGestionEcoleDeConduite->ApplicationWeb: recupererInformationsAutoEcole(informationsAutoEcole)
+    ApplicationWeb->Internaute: envoyerInformationsAutoEcole(informationsAutoEcole)
+else
+    Internaute->ApplicationWeb: consulterOffresEtTarifs()
+    ApplicationWeb->SystemeGestionEcoleDeConduite: requeteOffresEtTarifs()
+    SystemeGestionEcoleDeConduite->ApplicationWeb: recupererOffresEtTarifs(offresEtTarifs)
+    ApplicationWeb->Internaute: envoyerOffresEtTarifs(offresEtTarifs)
+end
+
+Internaute->ApplicationWeb: creerCompte(nom, email, motDePasse)
+ApplicationWeb->SystemeGestionEcoleDeConduite: requeteCreationCompte(nom, email, motDePasse)
+SystemeGestionEcoleDeConduite->GestionnaireCompte: verifierInformationsCompte(nom, email, motDePasse)
+alt
+    SystemeGestionEcoleDeConduite->GestionnaireCompte: creerCompte(compte)
+    ApplicationWeb->Internaute: compteCree(compte)
+else
+    SystemeGestionEcoleDeConduite->GestionnaireCompte: erreurCreationCompte()
+    ApplicationWeb->Internaute: erreurCreationCompte()
+end
+@enduml

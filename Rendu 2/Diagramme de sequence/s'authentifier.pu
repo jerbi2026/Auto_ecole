@@ -1,0 +1,21 @@
+@startuml
+participant Eleve
+participant ApplicationAutoEcole
+participant SystemeGestionAutoEcole
+
+Eleve->ApplicationAutoEcole: accederPageConnexion()
+
+Eleve->ApplicationAutoEcole: saisirIdentifiantMotDePasse(identifiant, motDePasse)
+
+ApplicationAutoEcole->SystemeGestionAutoEcole: authentifierEleve(identifiant, motDePasse)
+
+SystemeGestionAutoEcole->Eleve: verifierIdentifiantMotDePasseEleve(identifiant, motDePasse)
+
+alt
+    SystemeGestionAutoEcole->ApplicationAutoEcole: authentificationEleveReussie(eleve)
+    ApplicationAutoEcole->Eleve: authentificationReussie(eleve)
+else
+    SystemeGestionAutoEcole->ApplicationAutoEcole: authentificationEleveEchouee()
+    ApplicationAutoEcole->Eleve: authentificationEchouee()
+end
+@enduml

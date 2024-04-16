@@ -1,0 +1,21 @@
+@startuml
+participant Eleve
+participant ApplicationAutoEcole
+participant SystemeGestionAutoEcole
+
+Eleve->ApplicationAutoEcole: accederPageReservationCours()
+
+Eleve->ApplicationAutoEcole: selectionnerCours(idCours)
+
+ApplicationAutoEcole->SystemeGestionAutoEcole: reserverCours(idEleve, idCours)
+
+SystemeGestionAutoEcole->SystemeGestionAutoEcole: verifierDisponibiliteCours(idCours)
+
+alt
+    SystemeGestionAutoEcole->ApplicationAutoEcole: reservationCoursReussie(reservation)
+    ApplicationAutoEcole->Eleve: reservationReussie(reservation)
+else
+    SystemeGestionAutoEcole->ApplicationAutoEcole: reservationCoursEchouee(motif)
+    ApplicationAutoEcole->Eleve: reservationEchouee(motif)
+end
+@enduml
