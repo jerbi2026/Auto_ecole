@@ -1,0 +1,113 @@
+@startuml
+
+class Personne {
+    + nom: String
+    + prenom: String
+    + email: String
+    + mop: String
+    + inscriptions: List<Eleve>
+
+    + consulterInformations()
+    + modifierInformations()
+}
+
+class Instructeur {
+    + nom: String
+    + prenom: String
+    + email: String
+    + mop: String
+    + specialites: List<String>
+
+    + consulterInformations()
+    + modifierInformations()
+    + gererCours()
+}
+
+class Eleve {
+    + nom: String
+    + prenom: String
+    + email: String
+    + mop: String
+    + progression: String
+    + listeCours: List<Cours>
+
+    + consulterInformations()
+    + modifierInformations()
+    + sInscrireCours()
+    + suivreCours()
+}
+
+class Cours {
+    + id: int
+    + dateDebut: Date
+    + dateFin: Date
+    + nomCours: String
+    + nomInstructeur: String
+    + listeEleves: List<Eleve>
+    + listeEvaluations: List<Evaluation>
+
+    + annulerCours()
+    + modifierCours()
+}
+
+class Evaluation {
+    + idEval: int
+    + dateEval: Date
+    + description: String
+    + listeElevesEvalues: List<Eleve>
+
+    + ajouterNote()
+    + consulterNotes()
+}
+
+class GestionnairePersonne {
+    + creerPersonne(nom: String, prenom: String, email: String, mop: String): Personne
+    + modifierPersonne(personne: Personne)
+    + supprimerPersonne(personne: Personne)
+    + consulterListePersonnes(): List<Personne>
+}
+
+class GestionnaireInstructeur {
+    + creerInstructeur(nom: String, prenom: String, email: String, mop: String, specialites: List<String>): Instructeur
+    + modifierInstructeur(instructeur: Instructeur)
+    + supprimerInstructeur(instructeur: Instructeur)
+    + consulterListeInstructeurs(): List<Instructeur>
+}
+
+class GestionnaireEleve {
+    + creerEleve(nom: String, prenom: String, email: String, mop: String): Eleve
+    + modifierEleve(eleve: Eleve)
+    + supprimerEleve(eleve: Eleve)
+    + consulterListeEleves(): List<Eleve>
+}
+
+class GestionnaireCours {
+    + creerCours(instructeur: Instructeur, nomCours: String, dateDebut: Date, dateFin: Date): Cours
+    + modifierCours(cours: Cours)
+    + supprimerCours(cours: Cours)
+    + consulterListeCours(): List<Cours>
+}
+
+class GestionnaireEvaluation {
+    + creerEvaluation(cours: Cours, description: String, dateEval: Date): Evaluation
+    + modifierEvaluation(evaluation: Evaluation)
+    + supprimerEvaluation(evaluation: Evaluation)
+    + consulterListeEvaluations(cours: Cours): List<Evaluation>
+}
+
+Personne --|> Eleve
+Personne --|> Instructeur
+
+Instructeur --|> Cours
+
+Eleve --|> Cours
+
+Cours --|> Evaluation
+
+GestionnairePersonne --|> Personne
+GestionnaireInstructeur --|> Instructeur
+GestionnaireEleve --|> Eleve
+GestionnaireCours --|> Cours
+GestionnaireEvaluation --|> Evaluation
+
+@enduml
