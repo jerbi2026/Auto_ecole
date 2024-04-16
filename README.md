@@ -86,6 +86,76 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 
 
+## Aspect Statique : 
+### diagramme de classe : 
+![diagramme_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/c5239061-3925-47da-bf15-204cf9189d3a)
+
+### Description textuelle du diagramme de classe
+Le diagramme de classe représente les classes et les relations d'un système de gestion d'une auto-école. Les classes principales sont les suivantes :
+
+#### Personne :
+Représente une personne, qu'il s'agisse d'un élève, d'un instructeur ou d'un administrateur. Elle possède les attributs suivants :
+nom : Le nom de la personne.
+prenom : Le prénom de la personne.
+email : L'adresse e-mail de la personne.
+motDePasse : Le mot de passe de la personne.
+
+#### Eleve :
+Hérite de la classe Personne. Représente un élève inscrit à l'auto-école. Elle possède l'attribut supplémentaire suivant :
+progression : La progression de l'élève dans sa formation.
+Instructeur : Hérite de la classe Personne. Représente un instructeur de l'auto-école. Elle ne possède aucun attribut supplémentaire.
+
+#### Admin :
+Hérite de la classe Personne. Représente un administrateur de l'auto-école. Elle possède l'attribut supplémentaire suivant :
+niveauAcces : Le niveau d'accès de l'administrateur.
+Cours : Représente un cours de conduite. Elle possède les attributs suivants :
+nom : Le nom du cours.
+dateDebut : La date de début du cours.
+dateFin : La date de fin du cours.
+nombreHeures : Le nombre d'heures de cours.
+listeElevesInscrits : La liste des élèves inscrits au cours.
+listeEvaluations : La liste des évaluations du cours.
+
+#### Evaluation :
+Représente une évaluation d'un cours. Elle possède les attributs suivants :
+dateEvaluation : La date de l'évaluation.
+description : La description de l'évaluation.
+listeElevesEvalues : La liste des élèves évalués.
+
+#### Ressources :
+Représente une ressource pédagogique. Elle possède les attributs suivants :
+
+type : Le type de ressource (document, vidéo, etc.).
+contenu : Le contenu de la ressource.
+AutoEcole : Représente l'auto-école. Elle ne possède aucun attribut.
+
+#### Les relations entre les classes sont les suivantes :
+
+Association entre Personne et Cours : Une personne peut être inscrite à plusieurs cours.
+Association entre Instructeur et Cours : Un instructeur peut donner plusieurs cours.
+Association entre Eleve et Evaluation : Un élève peut être évalué plusieurs fois.
+Association entre Cours et Ressources : Un cours peut utiliser plusieurs ressources pédagogiques.
+Les classes GestionnaireEleve, GestionnaireInstructeur, GestionnaireEval et AutoEcole représentent des gestionnaires de classes. Elles fournissent des méthodes pour gérer les instances des classes correspondantes.
+
+#### Exemple d'utilisation
+
+Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecter un instructeur au cours et créer des évaluations pour le cours. Un instructeur peut consulter les informations sur un cours et les élèves inscrits, et saisir les notes des élèves lors des évaluations. Un élève peut consulter les informations sur ses cours et ses évaluations.
+
+## Aspect dynamique
+### Diagramme de sequence creer compte
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/3b0a2e17-3c6b-4622-ac85-752a1ad13f04)
+
+### Diagramme de sequence s'authentifier
+![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/f6f1d5e7-205c-4064-bcff-b74136ae506b)
+
+### Diagramme de sequence reserver un cours
+![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/47347dc4-847f-4a67-af2a-ff9bb50e97e9)
+
+
+
+
+
+
 ## Nombre de vues 👁️
 <img align="left" src = "https://views-counter.vercel.app/badge?pageId=auto_ecole_agl%2FViews-Counter" alt ="Loading">
 
