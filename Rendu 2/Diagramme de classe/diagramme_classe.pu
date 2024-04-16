@@ -95,15 +95,24 @@ class GestionnaireEvaluation {
     + consulterListeEvaluations(cours: Cours): List<Evaluation>
 }
 
+class loginDemande{
+    + email: String
+    + motDePasse: String
+}
+
+class trouver_demande{
+    + email: String
+    + motDePasse: String
+}
+
+
+
+
 Personne --|> Eleve
 Personne --|> Instructeur
-
 Instructeur --|> Cours
-
 Eleve --|> Cours
-
 Cours --|> Evaluation
-
 GestionnairePersonne --|> Personne
 GestionnaireInstructeur --|> Instructeur
 GestionnaireEleve --|> Eleve
