@@ -104,56 +104,79 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 
 ### Description textuelle du diagramme de classe
-Le diagramme de classe représente les classes et les relations d'un système de gestion d'une auto-école. Les classes principales sont les suivantes :
+#### Classes:
 
-#### Personne :
-Représente une personne, qu'il s'agisse d'un élève, d'un instructeur ou d'un administrateur. Elle possède les attributs suivants :
-nom : Le nom de la personne.
-prenom : Le prénom de la personne.
-email : L'adresse e-mail de la personne.
-motDePasse : Le mot de passe de la personne.
+##### Reservation:
+oid: Identifiant unique de la réservation
+dateReservation: Date de la réservation
+cours: Cours réservé
+eleve: Élève qui a effectué la réservation
+message: Message optionnel associé à la réservation
+annulerReservation(): Annule la réservation
+envoyerMessage(): Envoie un message à l'élève
+consulterInformations(): Consulte les informations de la réservation
+reinitialiserMotDePasse(): Réinitialise le mot de passe de l'élève (si applicable)
+modifierInformations(): Modifie les informations de la réservation
 
-#### Eleve :
-Hérite de la classe Personne. Représente un élève inscrit à l'auto-école. Elle possède l'attribut supplémentaire suivant :
-progression : La progression de l'élève dans sa formation.
-Instructeur : Hérite de la classe Personne. Représente un instructeur de l'auto-école. Elle ne possède aucun attribut supplémentaire.
+##### Cours:
+id: Identifiant unique du cours
+nomCours: Nom du cours
+dateDebut: Date de début du cours
+dateFin: Date de fin du cours
+oidInstructeur: Identifiant de l'instructeur qui dispense le cours
+listeEleves: Liste des élèves inscrits au cours
+listeEvaluations: Liste des évaluations du cours
+horraires: Horaires du cours
+annulerCours(): Annule le cours
+modifierCours(): Modifie les informations du cours
 
-#### Admin :
-Hérite de la classe Personne. Représente un administrateur de l'auto-école. Elle possède l'attribut supplémentaire suivant :
-niveauAcces : Le niveau d'accès de l'administrateur.
-Cours : Représente un cours de conduite. Elle possède les attributs suivants :
-nom : Le nom du cours.
-dateDebut : La date de début du cours.
-dateFin : La date de fin du cours.
-nombreHeures : Le nombre d'heures de cours.
-listeElevesInscrits : La liste des élèves inscrits au cours.
-listeEvaluations : La liste des évaluations du cours.
+##### Eleve:
+oid: Identifiant unique de l'élève
+nom: Nom de l'élève
+prenom: Prénom de l'élève
+email: Adresse email de l'élève
+connexionDemande: Demande de connexion (si applicable)
+cours: Liste des cours auxquels l'élève est inscrit
+inscriptions: Liste des inscriptions de l'élève
+consulterInformations(): Consulte les informations de l'élève
+modifierInformations(): Modifie les informations de l'élève
 
-#### Evaluation :
-Représente une évaluation d'un cours. Elle possède les attributs suivants :
-dateEvaluation : La date de l'évaluation.
-description : La description de l'évaluation.
-listeElevesEvalues : La liste des élèves évalués.
+##### Instructeur:
+id: Identifiant unique de l'instructeur
+nom: Nom de l'instructeur
+prenom: Prénom de l'instructeur
+oidEleve: Identifiant de l'élève responsable de l'instructeur (si applicable)
+progression: Progression de l'instructeur
+listeCours: Liste des cours dispensés par l'instructeur
+consulterInformations(): Consulte les informations de l'instructeur
+modifierInformations(): Modifie les informations de l'instructeur
+sinscrireCours(cours: Cours): S'inscrit à un cours
+suivreCours(cours: Cours): Suit un cours
+creerHorraire(jour: String, heureDebut: String, heureFin: String): Crée un horaire
+modifierHorraire(id: Int, jour: String, heureDebut: String, heureFin: String): Modifie un horaire
+supprimerHorraire(id: Int): Supprime un horaire
 
-#### Ressources :
-Représente une ressource pédagogique. Elle possède les attributs suivants :
+##### Admin:
+idManager: Identifiant unique du manager
+consulterEleves(): Consulte la liste des élèves
+creerEleve(eleve: Eleve): Crée un nouvel élève
+modifierEleve(eleve: Eleve): Modifie les informations d'un élève
+supprimerEleve(eleve: Eleve): Supprime un élève
+consulterInstructeurs(): Consulte la liste des instructeurs
+creerInstructeur(instructeur: Instructeur): Crée un nouvel instructeur
+modifierInstructeur(instructeur: Instructeur): Modifie les informations d'un instructeur
+supprimerInstructeur(instructeur: Instructeur): Supprime un instructeur
+consulterCours(): Consulte la liste des cours
+gererCours(): Gère les cours
+evaluerEleve(eleve: Eleve, note: int): Évalue un élève
 
-type : Le type de ressource (document, vidéo, etc.).
-contenu : Le contenu de la ressource.
-AutoEcole : Représente l'auto-école. Elle ne possède aucun attribut.
+#### Relations:
+- Une réservation est associée à un cours, un élève et un instructeur.
+- Un cours est dispensé par un instructeur et peut avoir plusieurs élèves inscrits.
+- Un élève peut être inscrit à plusieurs cours et peut avoir un instructeur responsable.
+- Un instructeur peut dispenser plusieurs cours et peut avoir un élève responsable.
+- Un administrateur peut gérer les élèves, les instructeurs et les cours.
 
-#### Les relations entre les classes sont les suivantes :
-
-##### Association entre Personne et Cours :
-Une personne peut être inscrite à plusieurs cours.
-##### Association entre Instructeur et Cours :
-Un instructeur peut donner plusieurs cours.
-##### Association entre Eleve et Evaluation :
-Un élève peut être évalué plusieurs fois.
-##### Association entre Cours et Ressources :
-Un cours peut utiliser plusieurs ressources pédagogiques.
-##### remarque
-Les classes GestionnaireEleve, GestionnaireInstructeur, GestionnaireEval et AutoEcole représentent des gestionnaires de classes. Elles fournissent des méthodes pour gérer les instances des classes correspondantes.
 
 #### Exemple d'utilisation
 
@@ -161,16 +184,13 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 ## Aspect dynamique
 ### Diagramme de sequence creer compte
-![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/3b0a2e17-3c6b-4622-ac85-752a1ad13f04)
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/6b8932ce-3fc9-4200-ae0c-d9e5a2f35795)
 
 ### Diagramme de sequence s'authentifier
-![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/f6f1d5e7-205c-4064-bcff-b74136ae506b)
+![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/ba9dfc1f-02f9-4762-ba57-f3a0a6d8aa13)
 
 ### Diagramme de sequence reserver un cours
-![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/47347dc4-847f-4a67-af2a-ff9bb50e97e9)
-
-
-
+![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/162ab706-aba2-4ee9-99f2-36e40f3b82d1)
 
 
 
