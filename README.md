@@ -33,33 +33,46 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 
 ## Conception 🧑🏻‍🎤: 
-![admin](https://github.com/jerbi2026/Auto_ecole/assets/116197682/43357256-7637-4af7-a45c-11de7142c074)
-![Internaute](https://github.com/jerbi2026/Auto_ecole/assets/116197682/9751be14-ceed-43fc-a0a9-1d5b2f58981a)
-![instructeur](https://github.com/jerbi2026/Auto_ecole/assets/116197682/1acc2203-0685-4d96-b2c8-7ef9b61467dd)
-![Eléve](https://github.com/jerbi2026/Auto_ecole/assets/116197682/9bde30bb-68e3-4d35-9802-d8401429a6a9)
+![Internaute](https://github.com/jerbi2026/Auto_ecole/assets/116197682/41677b2c-a873-4b01-ba91-0c24833eb5f2)
+![Eléve](https://github.com/jerbi2026/Auto_ecole/assets/116197682/0b0e8393-32c5-42c7-96ef-f4e95a0f3298)
+![instructeur](https://github.com/jerbi2026/Auto_ecole/assets/116197682/88dde3b9-77b5-41e1-b6e1-ca023bcfb4f1)
+![admin](https://github.com/jerbi2026/Auto_ecole/assets/116197682/5787fc00-2e1f-4800-ab2c-be937c75bcaa)
+
 
 ## Planification du premier sprint
 
-### Préconditions :
-- L’internaute a accès à une connexion internet
-- Le site web de l’auto-école est disponible et accessible
-
-### Postconditions :
-- L’internaute a consulté avec succès les différentes offres proposés par l’auto-école
-- Le site web de l’auto-école reste accessible pour l’internaute afin de poursuivre sa navigation ou d’effectuer d’autres actions
-
-
 ### Table de décision des tests de validation  :
-#### Consulter les informations sur l’auto-école :
+#### Réserver un cours:
+##### Préconditions :
+- Le client est inscrit auprès de l'auto-école.
+- Le cours est disponible à la réservation.
+- Il y a des places disponibles dans le cours.
 
-| Fonctionnalités                                                      | Test 1 | Test 2 | Test 3  | Test 4|
-|----------------------------------------------------------------------|--------|--------|--------|--------|
-| Accès à une connexion Internet                                       |   T    |   T    |   T    |   T    |
-| Site web de l'auto-école disponible et accessible                    |   T    |   T    |   T    |    T   |
-| Consultation des informations sur l'auto-école                       |   T    |   T    |   T    |    F   |
-| Consultation des offres et des tarifs                                |   T    |   T    |   F    |   F    |
-| Création d'un compte sur le site web de l'auto-école                 |   T    |   F    |   F    |   F    |
-|Nombre de jeux de tests                                               | 2      | 2*n    | 1      |   1    |
+##### Postconditions :
+- La réservation du cours est effectuée avec succès.
+- Une confirmation de réservation est envoyée au client.
+- Le nombre de places disponibles dans le cours est mis à jour.
+
+##### table de décision
+
+| Préconditions                                                        | Test 1 | Test 2 | Test 3 |              
+|----------------------------------------------------------------------|--------|--------|--------|
+| Le client est inscrit                                                |   T    |   T    |   T    |
+| Le cours est disponible à la réservation.                            |   T    |   T    |   F    |  
+| Il y a des places disponibles dans le cours.                         |   T    |   F    |   F    |
+
+| Postconditions                                                       | Test 1 | Test 2 | Test 3 |                          
+|----------------------------------------------------------------------|--------|--------|--------|
+| Réservation effectuée                                                |   T    |   F    |   F    |
+| Confirmation envoyée au client.                                      |   T    |   F    |   F    |
+| Mise à jour des places disponibles.                                  |   T    |   F    |   F    | 
+
+##### diagramme de test 
+![reserver_cours](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a9863611-1c84-4765-9716-1ff9f3ea2cc8)
+
+
+
+
 
 #### Consulter les offres et les tarifs  :
 
@@ -82,6 +95,82 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 | Consultation des offres et des tarifs                                |   T    |   T    |   F    |   F    |
 | Création d'un compte sur le site web de l'auto-école                 |   T    |   F    |   F    |   F    |
 |Nombre de jeux de tests                                               | 2      | 2*n    | 1      |   1    |
+
+
+
+## Aspect Statique : 
+### diagramme de classe : 
+![diagramme_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a26df161-63a6-4ecd-b1ea-9c9dbd7f1123)
+
+
+### Description textuelle du diagramme de classe
+Le diagramme de classe représente les classes et les relations d'un système de gestion d'une auto-école. Les classes principales sont les suivantes :
+
+#### Personne :
+Représente une personne, qu'il s'agisse d'un élève, d'un instructeur ou d'un administrateur. Elle possède les attributs suivants :
+nom : Le nom de la personne.
+prenom : Le prénom de la personne.
+email : L'adresse e-mail de la personne.
+motDePasse : Le mot de passe de la personne.
+
+#### Eleve :
+Hérite de la classe Personne. Représente un élève inscrit à l'auto-école. Elle possède l'attribut supplémentaire suivant :
+progression : La progression de l'élève dans sa formation.
+Instructeur : Hérite de la classe Personne. Représente un instructeur de l'auto-école. Elle ne possède aucun attribut supplémentaire.
+
+#### Admin :
+Hérite de la classe Personne. Représente un administrateur de l'auto-école. Elle possède l'attribut supplémentaire suivant :
+niveauAcces : Le niveau d'accès de l'administrateur.
+Cours : Représente un cours de conduite. Elle possède les attributs suivants :
+nom : Le nom du cours.
+dateDebut : La date de début du cours.
+dateFin : La date de fin du cours.
+nombreHeures : Le nombre d'heures de cours.
+listeElevesInscrits : La liste des élèves inscrits au cours.
+listeEvaluations : La liste des évaluations du cours.
+
+#### Evaluation :
+Représente une évaluation d'un cours. Elle possède les attributs suivants :
+dateEvaluation : La date de l'évaluation.
+description : La description de l'évaluation.
+listeElevesEvalues : La liste des élèves évalués.
+
+#### Ressources :
+Représente une ressource pédagogique. Elle possède les attributs suivants :
+
+type : Le type de ressource (document, vidéo, etc.).
+contenu : Le contenu de la ressource.
+AutoEcole : Représente l'auto-école. Elle ne possède aucun attribut.
+
+#### Les relations entre les classes sont les suivantes :
+
+##### Association entre Personne et Cours :
+Une personne peut être inscrite à plusieurs cours.
+##### Association entre Instructeur et Cours :
+Un instructeur peut donner plusieurs cours.
+##### Association entre Eleve et Evaluation :
+Un élève peut être évalué plusieurs fois.
+##### Association entre Cours et Ressources :
+Un cours peut utiliser plusieurs ressources pédagogiques.
+##### remarque
+Les classes GestionnaireEleve, GestionnaireInstructeur, GestionnaireEval et AutoEcole représentent des gestionnaires de classes. Elles fournissent des méthodes pour gérer les instances des classes correspondantes.
+
+#### Exemple d'utilisation
+
+Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecter un instructeur au cours et créer des évaluations pour le cours. Un instructeur peut consulter les informations sur un cours et les élèves inscrits, et saisir les notes des élèves lors des évaluations. Un élève peut consulter les informations sur ses cours et ses évaluations.
+
+## Aspect dynamique
+### Diagramme de sequence creer compte
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/3b0a2e17-3c6b-4622-ac85-752a1ad13f04)
+
+### Diagramme de sequence s'authentifier
+![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/f6f1d5e7-205c-4064-bcff-b74136ae506b)
+
+### Diagramme de sequence reserver un cours
+![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/47347dc4-847f-4a67-af2a-ff9bb50e97e9)
+
+
+
 
 
 
