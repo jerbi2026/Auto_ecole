@@ -1,0 +1,6 @@
+@startuml
+[*] --> EnAttente : Nouvelle évaluation
+EnAttente --> EnCours : Évaluation en cours
+EnCours --> Terminee : Évaluation terminée
+Terminee --> EnAttente : Nouvelle évaluation
+@enduml

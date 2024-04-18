@@ -1,0 +1,9 @@
+@startuml
+[*] --> EnAttente : Nouvelle réservation
+EnAttente --> EnCours : Paiement accepté
+EnAttente --> Annulee : Annulation demandée
+EnCours --> EnAttente : Annulation
+EnCours --> Terminee : Séjour terminé
+Terminee --> EnAttente : Nouvelle réservation
+Annulee --> EnAttente : Nouvelle réservation
+@enduml

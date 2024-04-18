@@ -1,24 +1,23 @@
 @startuml
 title Diagramme de décision - Créer un compte
 
-if (Personne est-elle majeure ?) then (Oui)
-    :Vérifier l'adresse e-mail;
-    if (Adresse e-mail déjà utilisée ?) then (Oui)
-        :Afficher message "Adresse e-mail déjà utilisée";
-    else (Non)
-        :Vérifier le mot de passe;
-        if (Mot de passe valide ?) then (Oui)
-            :Créer le compte;
+if (Accès à une connexion internet ?) then (Oui)
+    if (Système d'inscription disponible et accessible ?) then (Oui)
+        :L'utilisateur fournit les informations nécessaires pour créer un compte (nom, adresse e-mail, mot de passe);
+        if (Les informations fournies sont valides ?) then (Oui)
+            :Créer le compte utilisateur;
             if (Envoyer un e-mail de confirmation ?) then (Oui)
                 :Envoyer un e-mail de confirmation à l'utilisateur;
             else (Non)
-                :Afficher message "Compte créé avec succès";
+                :Afficher un message de confirmation "Compte créé avec succès";
             endif
         else (Non)
-            :Afficher message "Mot de passe invalide";
+            :Afficher un message d'erreur "Informations invalides";
         endif
+    else (Non)
+        :Afficher un message d'erreur "Système d'inscription non disponible";
     endif
 else (Non)
-    :Refuser la création de compte;
+    :Afficher un message d'erreur "Pas de connexion internet";
 endif
 @enduml
