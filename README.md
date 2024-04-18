@@ -42,6 +42,73 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 ## Planification du premier sprint
 
 ### Table de décision des tests de validation  :
+
+#### créer un compte  :
+##### Préconditions :
+- L'utilisateur a accès à une connexion internet.
+- Le système d'inscription est disponible et accessible.
+- L'utilisateur fournit des informations valides pour créer un compte (nom, adresse e-mail, mot de passe).
+
+##### Postconditions :
+- Le compte utilisateur est créé avec succès.
+- L'utilisateur reçoit un message de confirmation de création de compte.
+- L'utilisateur peut accéder aux fonctionnalités restreintes du système avec les informations d'identification fournies.
+
+##### table de décision
+
+| Préconditions                                                                                            | Test 1 | Test 2 | Test 3 | Test 4 |              
+|----------------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| L'utilisateur a accès à une connexion internet.                                                          |   T    |   T    |   T    |   F    |
+| Le système d'inscription est disponible et accessible.                                                   |   T    |   T    |   F    |   F    |  
+| L'utilisateur fournit des informations valides pour créer un compte (nom, adresse e-mail, mot de passe). |   T    |   F    |   F    |   F    |
+
+| Postconditions                                                                                                         | Test 1 | Test 2 | Test 3 | Test 4 |              
+|------------------------------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| Le compte utilisateur est créé avec succès.                                                                            |   T    |   F    |   F    |   F    |
+| L'utilisateur reçoit un message de confirmation de création de compte.                                                 |   T    |   F    |   F    |   F    |  
+| L'utilisateur peut accéder aux fonctionnalités restreintes du système avec les informations d'identification fournies. |   T    |   F    |   F    |   F    |  
+
+##### diagramme de test 
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/b81dda59-1d98-4037-b085-9c33a0b5dc4b)
+
+
+
+
+
+
+
+
+#### S'authentifier  :
+##### Préconditions :
+- L'utilisateur a accès à une connexion internet.
+- L'utilisateur a un compte enregistré dans le système.
+- L'utilisateur fournit des informations d'identification valides (adresse e-mail et mot de passe).
+
+##### Postconditions :
+- L'utilisateur est authentifié avec succès.
+- L'utilisateur reçoit un message de bienvenue ou est redirigé vers une page d'accueil après l'authentification.
+
+
+##### table de décision
+
+| Préconditions                                                                                     | Test 1 | Test 2 | Test 3 | Test 4 |              
+|---------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| L'utilisateur a accès à une connexion internet.                                                   |   T    |   T    |   T    |   F    |
+| L'utilisateur a un compte enregistré dans le système.                                             |   T    |   T    |   F    |   F    |  
+| L'utilisateur fournit des informations d'identification valides (adresse e-mail et mot de passe). |   T    |   F    |   F    |   F    |
+
+| Postconditions                                                                                                  | Test 1 | Test 2 | Test 3 | Test 4 |              
+|-----------------------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| L'utilisateur est authentifié avec succès.                                                                      |   T    |   T    |   T    |   F    |
+| L'utilisateur reçoit un message de bienvenue ou est redirigé vers une page d'accueil après l'authentification.  |   T    |   T    |   F    |   F    |  
+
+
+##### diagramme de test 
+![authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/04ea3321-c0a2-44f9-b577-d6ece9bac0c6)
+
+
+
+
 #### Réserver un cours:
 ##### Préconditions :
 - Le client est inscrit auprès de l'auto-école.
@@ -55,46 +122,22 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 ##### table de décision
 
-| Préconditions                                                        | Test 1 | Test 2 | Test 3 |              
-|----------------------------------------------------------------------|--------|--------|--------|
-| Le client est inscrit                                                |   T    |   T    |   T    |
-| Le cours est disponible à la réservation.                            |   T    |   T    |   F    |  
-| Il y a des places disponibles dans le cours.                         |   T    |   F    |   F    |
+| Préconditions                                                        | Test 1 | Test 2 | Test 3 | Test 4 |              
+|----------------------------------------------------------------------|--------|--------|--------|--------|
+| Le client est inscrit                                                |   T    |   T    |   T    |   F    |
+| Le cours est disponible à la réservation.                            |   T    |   T    |   F    |   F    |  
+| Il y a des places disponibles dans le cours.                         |   T    |   F    |   F    |   F    |
 
-| Postconditions                                                       | Test 1 | Test 2 | Test 3 |                          
-|----------------------------------------------------------------------|--------|--------|--------|
-| Réservation effectuée                                                |   T    |   F    |   F    |
-| Confirmation envoyée au client.                                      |   T    |   F    |   F    |
-| Mise à jour des places disponibles.                                  |   T    |   F    |   F    | 
+| Postconditions                                                       | Test 1 | Test 2 | Test 3 | Test 4 |                          
+|----------------------------------------------------------------------|--------|--------|--------|--------|
+| Réservation effectuée                                                |   T    |   F    |   F    |   F    |
+| Confirmation envoyée au client.                                      |   T    |   F    |   F    |   F    |
+| Mise à jour des places disponibles.                                  |   T    |   F    |   F    |   F    | 
 
 ##### diagramme de test 
 ![reserver_cours](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a9863611-1c84-4765-9716-1ff9f3ea2cc8)
 
 
-
-
-
-#### Consulter les offres et les tarifs  :
-
-| Fonctionnalités                                                      | Test 1 | Test 2 | Test 3  | Test 4|
-|----------------------------------------------------------------------|--------|--------|--------|--------|
-| Accès à une connexion Internet                                       |   T    |   T    |   T    |   T    |
-| Site web de l'auto-école disponible et accessible                    |   T    |   T    |   T    |    T   |
-| Consultation des informations sur l'auto-école                       |   T    |   T    |   T    |    F   |
-| Consultation des offres et des tarifs                                |   T    |   T    |   F    |   F    |
-| Création d'un compte sur le site web de l'auto-école                 |   T    |   F    |   F    |   F    |
-|Nombre de jeux de tests                                               | 2      | 2*n    | 1      |   1    |
-
-#### Créer un compte  :
-
-| Fonctionnalités                                                      | Test 1 | Test 2 | Test 3  | Test 4|
-|----------------------------------------------------------------------|--------|--------|--------|--------|
-| Accès à une connexion Internet                                       |   T    |   T    |   T    |   T    |
-| Site web de l'auto-école disponible et accessible                    |   T    |   T    |   T    |    T   |
-| Consultation des informations sur l'auto-école                       |   T    |   T    |   T    |    F   |
-| Consultation des offres et des tarifs                                |   T    |   T    |   F    |   F    |
-| Création d'un compte sur le site web de l'auto-école                 |   T    |   F    |   F    |   F    |
-|Nombre de jeux de tests                                               | 2      | 2*n    | 1      |   1    |
 
 
 
