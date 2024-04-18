@@ -100,7 +100,8 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 ## Aspect Statique : 
 ### diagramme de classe : 
-![diagramme_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/c5239061-3925-47da-bf15-204cf9189d3a)
+![diagramme_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a26df161-63a6-4ecd-b1ea-9c9dbd7f1123)
+
 
 ### Description textuelle du diagramme de classe
 Le diagramme de classe représente les classes et les relations d'un système de gestion d'une auto-école. Les classes principales sont les suivantes :
