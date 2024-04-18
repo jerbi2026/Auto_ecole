@@ -1,34 +1,29 @@
 @startuml
-
 participant GestionnaireCompte
-participant ApplicationWeb
-participant SystemeGestionEcoleDeConduite
+participant Auto_ecole
+participant Internaute
 
-Internaute->ApplicationWeb: accederSiteWeb()
-ApplicationWeb->SystemeGestionEcoleDeConduite: requetePageHome()
-SystemeGestionEcoleDeConduite->ApplicationWeb: recupererPageHome(pageHome)
-ApplicationWeb->Internaute: envoyerPageHome(pageHome)
+Internaute->Auto_ecole: accederSiteWeb()
+Auto_ecole->Internaute: envoyerPageHome(pageHome)
 
 alt
-    Internaute->ApplicationWeb: consulterInformationsAutoEcole(idAutoEcole)
-    ApplicationWeb->SystemeGestionEcoleDeConduite: requeteInformationsAutoEcole(idAutoEcole)
-    SystemeGestionEcoleDeConduite->ApplicationWeb: recupererInformationsAutoEcole(informationsAutoEcole)
-    ApplicationWeb->Internaute: envoyerInformationsAutoEcole(informationsAutoEcole)
+    Internaute->Auto_ecole: consulterInformationsAutoEcole(idAutoEcole)
+    Auto_ecole->Auto_ecole: requeteInformationsAutoEcole(idAutoEcole)
+    Auto_ecole->Internaute: envoyerInformationsAutoEcole(informationsAutoEcole)
 else
-    Internaute->ApplicationWeb: consulterOffresEtTarifs()
-    ApplicationWeb->SystemeGestionEcoleDeConduite: requeteOffresEtTarifs()
-    SystemeGestionEcoleDeConduite->ApplicationWeb: recupererOffresEtTarifs(offresEtTarifs)
-    ApplicationWeb->Internaute: envoyerOffresEtTarifs(offresEtTarifs)
+    Internaute->Auto_ecole: consulterOffresEtTarifs()
+    Auto_ecole->Auto_ecole: requeteOffresEtTarifs()
+    Auto_ecole->Internaute: envoyerOffresEtTarifs(offresEtTarifs)
 end
 
-Internaute->ApplicationWeb: creerCompte(nom, email, motDePasse)
-ApplicationWeb->SystemeGestionEcoleDeConduite: requeteCreationCompte(nom, email, motDePasse)
-SystemeGestionEcoleDeConduite->GestionnaireCompte: verifierInformationsCompte(nom, email, motDePasse)
+Internaute->Auto_ecole: creerCompte(nom, email, motDePasse)
+Auto_ecole->GestionnaireCompte: requeteCreationCompte(nom, email, motDePasse)
+GestionnaireCompte->Auto_ecole: verifierInformationsCompte(nom, email, motDePasse)
 alt
-    SystemeGestionEcoleDeConduite->GestionnaireCompte: creerCompte(compte)
-    ApplicationWeb->Internaute: compteCree(compte)
+    GestionnaireCompte->Auto_ecole: creerCompte(compte)
+    Auto_ecole->Internaute: compteCree(compte)
 else
-    SystemeGestionEcoleDeConduite->GestionnaireCompte: erreurCreationCompte()
-    ApplicationWeb->Internaute: erreurCreationCompte()
+    GestionnaireCompte->Auto_ecole: erreurCreationCompte()
+    Auto_ecole->Internaute: erreurCreationCompte()
 end
 @enduml

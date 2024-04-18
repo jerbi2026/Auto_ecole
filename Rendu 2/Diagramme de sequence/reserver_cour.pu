@@ -1,21 +1,21 @@
 @startuml
 participant Eleve
-participant ApplicationAutoEcole
-participant SystemeGestionAutoEcole
+participant AutoEcole
+participant Reservations
 
-Eleve->ApplicationAutoEcole: accederPageReservationCours()
+Eleve->AutoEcole: accederPageReservationCours()
 
-Eleve->ApplicationAutoEcole: selectionnerCours(idCours)
+Eleve->AutoEcole: selectionnerCours(idCours)
 
-ApplicationAutoEcole->SystemeGestionAutoEcole: reserverCours(idEleve, idCours)
+AutoEcole->Reservations: reserverCours(idEleve, idCours)
 
-SystemeGestionAutoEcole->SystemeGestionAutoEcole: verifierDisponibiliteCours(idCours)
+Reservations->Reservations: verifierDisponibiliteCours(idCours)
 
 alt
-    SystemeGestionAutoEcole->ApplicationAutoEcole: reservationCoursReussie(reservation)
-    ApplicationAutoEcole->Eleve: reservationReussie(reservation)
+    Reservations->AutoEcole: reservationCoursReussie(reservation)
+    AutoEcole->Eleve: reservationReussie(reservation)
 else
-    SystemeGestionAutoEcole->ApplicationAutoEcole: reservationCoursEchouee(motif)
-    ApplicationAutoEcole->Eleve: reservationEchouee(motif)
+    Reservations->AutoEcole: reservationCoursEchouee(motif)
+    AutoEcole->Eleve: reservationEchouee(motif)
 end
 @enduml

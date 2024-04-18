@@ -1,0 +1,24 @@
+@startuml
+title Diagramme de décision - Réserver un cours
+
+if (Client est inscrit ?) then (Oui)
+    :Vérifier la disponibilité du cours à la date choisie;
+    if (Cours disponible ?) then (Oui)
+        :Vérifier si le participant est déjà inscrit au cours;
+        if (Participant déjà inscrit ?) then (Oui)
+            :Afficher message "Participant déjà inscrit au cours";
+        else (Non)
+            :Confirmer la réservation du cours;
+            if (Envoi email de confirmation ?) then (Oui)
+                :Envoyer un email de confirmation au participant;
+            else (Non)
+                :Afficher message "Réservation effectuée avec succès";
+            endif
+        endif
+    else (Non)
+        :Afficher message "Cours complet à la date choisie";
+    endif
+else (Non)
+    :Afficher message "Client non inscrit";
+endif
+@enduml

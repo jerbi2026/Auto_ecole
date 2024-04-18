@@ -1,0 +1,9 @@
+Préconditions :
+L'utilisateur a accès à une connexion internet.
+Le système d'authentification est disponible et accessible.
+L'utilisateur a un compte enregistré dans le système.
+L'utilisateur fournit des informations d'identification valides (adresse e-mail et mot de passe).
+Postconditions :
+L'utilisateur est authentifié avec succès.
+L'accès aux fonctionnalités restreintes du système est accordé.
+L'utilisateur reçoit un message de bienvenue ou est redirigé vers une page d'accueil après l'authentification.

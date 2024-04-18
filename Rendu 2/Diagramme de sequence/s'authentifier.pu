@@ -1,21 +1,21 @@
 @startuml
 participant Eleve
-participant ApplicationAutoEcole
-participant SystemeGestionAutoEcole
+participant AutoEcole
+participant ConnexionDemande
 
-Eleve->ApplicationAutoEcole: accederPageConnexion()
+Eleve->AutoEcole: accederPageConnexion()
 
-Eleve->ApplicationAutoEcole: saisirIdentifiantMotDePasse(identifiant, motDePasse)
+Eleve->AutoEcole: saisirIdentifiantMotDePasse(identifiant, motDePasse)
 
-ApplicationAutoEcole->SystemeGestionAutoEcole: authentifierEleve(identifiant, motDePasse)
+AutoEcole->ConnexionDemande: authentifierEleve(identifiant, motDePasse)
 
-SystemeGestionAutoEcole->Eleve: verifierIdentifiantMotDePasseEleve(identifiant, motDePasse)
+ConnexionDemande->Eleve: verifierIdentifiantMotDePasseEleve(identifiant, motDePasse)
 
 alt
-    SystemeGestionAutoEcole->ApplicationAutoEcole: authentificationEleveReussie(eleve)
-    ApplicationAutoEcole->Eleve: authentificationReussie(eleve)
+    ConnexionDemande->AutoEcole: authentificationEleveReussie(eleve)
+    AutoEcole->Eleve: authentificationReussie(eleve)
 else
-    SystemeGestionAutoEcole->ApplicationAutoEcole: authentificationEleveEchouee()
-    ApplicationAutoEcole->Eleve: authentificationEchouee()
+    ConnexionDemande->AutoEcole: authentificationEleveEchouee()
+    AutoEcole->Eleve: authentificationEchouee()
 end
 @enduml

@@ -1,0 +1,24 @@
+@startuml
+title Diagramme de décision - Créer un compte
+
+if (Personne est-elle majeure ?) then (Oui)
+    :Vérifier l'adresse e-mail;
+    if (Adresse e-mail déjà utilisée ?) then (Oui)
+        :Afficher message "Adresse e-mail déjà utilisée";
+    else (Non)
+        :Vérifier le mot de passe;
+        if (Mot de passe valide ?) then (Oui)
+            :Créer le compte;
+            if (Envoyer un e-mail de confirmation ?) then (Oui)
+                :Envoyer un e-mail de confirmation à l'utilisateur;
+            else (Non)
+                :Afficher message "Compte créé avec succès";
+            endif
+        else (Non)
+            :Afficher message "Mot de passe invalide";
+        endif
+    endif
+else (Non)
+    :Refuser la création de compte;
+endif
+@enduml
