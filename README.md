@@ -42,6 +42,73 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 ## Planification du premier sprint
 
 ### Table de décision des tests de validation  :
+
+#### créer un compte  :
+##### Préconditions :
+- L'utilisateur a accès à une connexion internet.
+- Le système d'inscription est disponible et accessible.
+- L'utilisateur fournit des informations valides pour créer un compte (nom, adresse e-mail, mot de passe).
+
+##### Postconditions :
+- Le compte utilisateur est créé avec succès.
+- L'utilisateur reçoit un message de confirmation de création de compte.
+- L'utilisateur peut accéder aux fonctionnalités restreintes du système avec les informations d'identification fournies.
+
+##### table de décision
+
+| Préconditions                                                                                            | Test 1 | Test 2 | Test 3 | Test 4 |              
+|----------------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| L'utilisateur a accès à une connexion internet.                                                          |   T    |   T    |   T    |   F    |
+| Le système d'inscription est disponible et accessible.                                                   |   T    |   T    |   F    |   F    |  
+| L'utilisateur fournit des informations valides pour créer un compte (nom, adresse e-mail, mot de passe). |   T    |   F    |   F    |   F    |
+
+| Postconditions                                                                                                         | Test 1 | Test 2 | Test 3 | Test 4 |              
+|------------------------------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| Le compte utilisateur est créé avec succès.                                                                            |   T    |   F    |   F    |   F    |
+| L'utilisateur reçoit un message de confirmation de création de compte.                                                 |   T    |   F    |   F    |   F    |  
+| L'utilisateur peut accéder aux fonctionnalités restreintes du système avec les informations d'identification fournies. |   T    |   F    |   F    |   F    |  
+
+##### diagramme de test 
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/b81dda59-1d98-4037-b085-9c33a0b5dc4b)
+
+
+
+
+
+
+
+
+#### S'authentifier  :
+##### Préconditions :
+- L'utilisateur a accès à une connexion internet.
+- L'utilisateur a un compte enregistré dans le système.
+- L'utilisateur fournit des informations d'identification valides (adresse e-mail et mot de passe).
+
+##### Postconditions :
+- L'utilisateur est authentifié avec succès.
+- L'utilisateur reçoit un message de bienvenue ou est redirigé vers une page d'accueil après l'authentification.
+
+
+##### table de décision
+
+| Préconditions                                                                                     | Test 1 | Test 2 | Test 3 | Test 4 |              
+|---------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| L'utilisateur a accès à une connexion internet.                                                   |   T    |   T    |   T    |   F    |
+| L'utilisateur a un compte enregistré dans le système.                                             |   T    |   T    |   F    |   F    |  
+| L'utilisateur fournit des informations d'identification valides (adresse e-mail et mot de passe). |   T    |   F    |   F    |   F    |
+
+| Postconditions                                                                                                  | Test 1 | Test 2 | Test 3 | Test 4 |              
+|-----------------------------------------------------------------------------------------------------------------|--------|--------|--------|--------|
+| L'utilisateur est authentifié avec succès.                                                                      |   T    |   T    |   T    |   F    |
+| L'utilisateur reçoit un message de bienvenue ou est redirigé vers une page d'accueil après l'authentification.  |   T    |   T    |   F    |   F    |  
+
+
+##### diagramme de test 
+![authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/04ea3321-c0a2-44f9-b577-d6ece9bac0c6)
+
+
+
+
 #### Réserver un cours:
 ##### Préconditions :
 - Le client est inscrit auprès de l'auto-école.
@@ -55,17 +122,17 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 ##### table de décision
 
-| Préconditions                                                        | Test 1 | Test 2 | Test 3 |              
-|----------------------------------------------------------------------|--------|--------|--------|
-| Le client est inscrit                                                |   T    |   T    |   T    |
-| Le cours est disponible à la réservation.                            |   T    |   T    |   F    |  
-| Il y a des places disponibles dans le cours.                         |   T    |   F    |   F    |
+| Préconditions                                                        | Test 1 | Test 2 | Test 3 | Test 4 |              
+|----------------------------------------------------------------------|--------|--------|--------|--------|
+| Le client est inscrit                                                |   T    |   T    |   T    |   F    |
+| Le cours est disponible à la réservation.                            |   T    |   T    |   F    |   F    |  
+| Il y a des places disponibles dans le cours.                         |   T    |   F    |   F    |   F    |
 
-| Postconditions                                                       | Test 1 | Test 2 | Test 3 |                          
-|----------------------------------------------------------------------|--------|--------|--------|
-| Réservation effectuée                                                |   T    |   F    |   F    |
-| Confirmation envoyée au client.                                      |   T    |   F    |   F    |
-| Mise à jour des places disponibles.                                  |   T    |   F    |   F    | 
+| Postconditions                                                       | Test 1 | Test 2 | Test 3 | Test 4 |                          
+|----------------------------------------------------------------------|--------|--------|--------|--------|
+| Réservation effectuée                                                |   T    |   F    |   F    |   F    |
+| Confirmation envoyée au client.                                      |   T    |   F    |   F    |   F    |
+| Mise à jour des places disponibles.                                  |   T    |   F    |   F    |   F    | 
 
 ##### diagramme de test 
 ![reserver_cours](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a9863611-1c84-4765-9716-1ff9f3ea2cc8)
@@ -74,86 +141,85 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 
 
-#### Consulter les offres et les tarifs  :
-
-| Fonctionnalités                                                      | Test 1 | Test 2 | Test 3  | Test 4|
-|----------------------------------------------------------------------|--------|--------|--------|--------|
-| Accès à une connexion Internet                                       |   T    |   T    |   T    |   T    |
-| Site web de l'auto-école disponible et accessible                    |   T    |   T    |   T    |    T   |
-| Consultation des informations sur l'auto-école                       |   T    |   T    |   T    |    F   |
-| Consultation des offres et des tarifs                                |   T    |   T    |   F    |   F    |
-| Création d'un compte sur le site web de l'auto-école                 |   T    |   F    |   F    |   F    |
-|Nombre de jeux de tests                                               | 2      | 2*n    | 1      |   1    |
-
-#### Créer un compte  :
-
-| Fonctionnalités                                                      | Test 1 | Test 2 | Test 3  | Test 4|
-|----------------------------------------------------------------------|--------|--------|--------|--------|
-| Accès à une connexion Internet                                       |   T    |   T    |   T    |   T    |
-| Site web de l'auto-école disponible et accessible                    |   T    |   T    |   T    |    T   |
-| Consultation des informations sur l'auto-école                       |   T    |   T    |   T    |    F   |
-| Consultation des offres et des tarifs                                |   T    |   T    |   F    |   F    |
-| Création d'un compte sur le site web de l'auto-école                 |   T    |   F    |   F    |   F    |
-|Nombre de jeux de tests                                               | 2      | 2*n    | 1      |   1    |
-
-
-
 ## Aspect Statique : 
-### diagramme de classe : 
-![diagramme_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a26df161-63a6-4ecd-b1ea-9c9dbd7f1123)
+### diagramme de classe Raffiné (Conception Detaillé): 
+![diagramme_classe_raffine](https://github.com/jerbi2026/Auto_ecole/assets/116197682/51bd6c7d-810e-407e-8427-25db0f1ea843)
 
 
 ### Description textuelle du diagramme de classe
-Le diagramme de classe représente les classes et les relations d'un système de gestion d'une auto-école. Les classes principales sont les suivantes :
+#### Classes:
 
-#### Personne :
-Représente une personne, qu'il s'agisse d'un élève, d'un instructeur ou d'un administrateur. Elle possède les attributs suivants :
-nom : Le nom de la personne.
-prenom : Le prénom de la personne.
-email : L'adresse e-mail de la personne.
-motDePasse : Le mot de passe de la personne.
+##### Reservation:
+id: Identifiant unique de la réservation
+dateReservation: Date de la réservation
+cours: Cours réservé
+eleve: Élève qui a effectué la réservation
+message: Message optionnel associé à la réservation
+annulerReservation(): Annule la réservation
+envoyerMessage(): Envoie un message à l'élève
+consulterInformations(): Consulte les informations de la réservation
+reinitialiserMotDePasse(): Réinitialise le mot de passe de l'élève (si applicable)
+modifierInformations(): Modifie les informations de la réservation
 
-#### Eleve :
-Hérite de la classe Personne. Représente un élève inscrit à l'auto-école. Elle possède l'attribut supplémentaire suivant :
-progression : La progression de l'élève dans sa formation.
-Instructeur : Hérite de la classe Personne. Représente un instructeur de l'auto-école. Elle ne possède aucun attribut supplémentaire.
+##### Cours:
+id: Identifiant unique du cours
+nomCours: Nom du cours
+dateDebut: Date de début du cours
+dateFin: Date de fin du cours
+oidInstructeur: Identifiant de l'instructeur qui dispense le cours
+listeEleves: Liste des élèves inscrits au cours
+listeEvaluations: Liste des évaluations du cours
+horraires: Horaires du cours
+annulerCours(): Annule le cours
+modifierCours(): Modifie les informations du cours
 
-#### Admin :
-Hérite de la classe Personne. Représente un administrateur de l'auto-école. Elle possède l'attribut supplémentaire suivant :
-niveauAcces : Le niveau d'accès de l'administrateur.
-Cours : Représente un cours de conduite. Elle possède les attributs suivants :
-nom : Le nom du cours.
-dateDebut : La date de début du cours.
-dateFin : La date de fin du cours.
-nombreHeures : Le nombre d'heures de cours.
-listeElevesInscrits : La liste des élèves inscrits au cours.
-listeEvaluations : La liste des évaluations du cours.
+##### Eleve:
+oid: Identifiant unique de l'élève
+nom: Nom de l'élève
+prenom: Prénom de l'élève
+email: Adresse email de l'élève
+connexionDemande: Demande de connexion (si applicable)
+cours: Liste des cours auxquels l'élève est inscrit
+inscriptions: Liste des inscriptions de l'élève
+consulterInformations(): Consulte les informations de l'élève
+modifierInformations(): Modifie les informations de l'élève
 
-#### Evaluation :
-Représente une évaluation d'un cours. Elle possède les attributs suivants :
-dateEvaluation : La date de l'évaluation.
-description : La description de l'évaluation.
-listeElevesEvalues : La liste des élèves évalués.
+##### Instructeur:
+id: Identifiant unique de l'instructeur
+nom: Nom de l'instructeur
+prenom: Prénom de l'instructeur
+oidEleve: Identifiant de l'élève responsable de l'instructeur (si applicable)
+progression: Progression de l'instructeur
+listeCours: Liste des cours dispensés par l'instructeur
+consulterInformations(): Consulte les informations de l'instructeur
+modifierInformations(): Modifie les informations de l'instructeur
+sinscrireCours(cours: Cours): S'inscrit à un cours
+suivreCours(cours: Cours): Suit un cours
+creerHorraire(jour: String, heureDebut: String, heureFin: String): Crée un horaire
+modifierHorraire(id: Int, jour: String, heureDebut: String, heureFin: String): Modifie un horaire
+supprimerHorraire(id: Int): Supprime un horaire
 
-#### Ressources :
-Représente une ressource pédagogique. Elle possède les attributs suivants :
+##### Admin:
+idManager: Identifiant unique du manager
+consulterEleves(): Consulte la liste des élèves
+creerEleve(eleve: Eleve): Crée un nouvel élève
+modifierEleve(eleve: Eleve): Modifie les informations d'un élève
+supprimerEleve(eleve: Eleve): Supprime un élève
+consulterInstructeurs(): Consulte la liste des instructeurs
+creerInstructeur(instructeur: Instructeur): Crée un nouvel instructeur
+modifierInstructeur(instructeur: Instructeur): Modifie les informations d'un instructeur
+supprimerInstructeur(instructeur: Instructeur): Supprime un instructeur
+consulterCours(): Consulte la liste des cours
+gererCours(): Gère les cours
+evaluerEleve(eleve: Eleve, note: int): Évalue un élève
 
-type : Le type de ressource (document, vidéo, etc.).
-contenu : Le contenu de la ressource.
-AutoEcole : Représente l'auto-école. Elle ne possède aucun attribut.
+#### Relations:
+- Une réservation est associée à un cours, un élève et un instructeur.
+- Un cours est dispensé par un instructeur et peut avoir plusieurs élèves inscrits.
+- Un élève peut être inscrit à plusieurs cours et peut avoir un instructeur responsable.
+- Un instructeur peut dispenser plusieurs cours et peut avoir un élève responsable.
+- Un administrateur peut gérer les élèves, les instructeurs et les cours.
 
-#### Les relations entre les classes sont les suivantes :
-
-##### Association entre Personne et Cours :
-Une personne peut être inscrite à plusieurs cours.
-##### Association entre Instructeur et Cours :
-Un instructeur peut donner plusieurs cours.
-##### Association entre Eleve et Evaluation :
-Un élève peut être évalué plusieurs fois.
-##### Association entre Cours et Ressources :
-Un cours peut utiliser plusieurs ressources pédagogiques.
-##### remarque
-Les classes GestionnaireEleve, GestionnaireInstructeur, GestionnaireEval et AutoEcole représentent des gestionnaires de classes. Elles fournissent des méthodes pour gérer les instances des classes correspondantes.
 
 #### Exemple d'utilisation
 
@@ -161,13 +227,42 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 ## Aspect dynamique
 ### Diagramme de sequence creer compte
-![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/3b0a2e17-3c6b-4622-ac85-752a1ad13f04)
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/6b8932ce-3fc9-4200-ae0c-d9e5a2f35795)
 
 ### Diagramme de sequence s'authentifier
-![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/f6f1d5e7-205c-4064-bcff-b74136ae506b)
+![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/ba9dfc1f-02f9-4762-ba57-f3a0a6d8aa13)
 
 ### Diagramme de sequence reserver un cours
-![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/47347dc4-847f-4a67-af2a-ff9bb50e97e9)
+![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/162ab706-aba2-4ee9-99f2-36e40f3b82d1)
+
+
+## Conception Detaillé : 
+### un diagramme de machine à états de la classe Evaluation:
+![diagramme_evaluation](https://github.com/jerbi2026/Auto_ecole/assets/116197682/800d1c4f-5089-4d8b-9417-0f26344b7853)
+
+* EnAttente : L’état initial lorsque l’évaluation est créée. Le système attend que l’évaluation soit effectuée.
+   - Transition vers EnCours : Le paiement est accepté.
+   - Transition vers Annulee : L’utilisateur demande l’annulation de l’évaluation.
+* EnCours : L’évaluation est en cours. Des actions telles que la saisie des notes et la rédaction de la description peuvent être effectuées.
+   - Transition vers EnAttente : L’utilisateur annule l’évaluation.
+   - Transition vers Terminee : L’évaluation est terminée.
+* Terminee : L’évaluation est terminée. Une nouvelle évaluation peut être initiée.
+* Annulee : L’évaluation a été annulée. Une nouvelle évaluation peut être initiée.
+
+### un diagramme de machine à états de la classe Reservation:
+![diagramme_reservations](https://github.com/jerbi2026/Auto_ecole/assets/116197682/2ceeb9aa-0435-4bf0-aab9-4e36ff3b8788)
+
+* EnAttente : L’état initial lorsque la réservation est créée. Le système attend le paiement.
+  - Transition vers EnCours : Le paiement est accepté.
+  - Transition vers Annulee : L’utilisateur demande l’annulation de la réservation.
+* EnCours : La réservation est active, le paiement a été accepté. Des actions telles que la modification ou l’annulation peuvent être effectuées.
+  - Transition vers EnAttente : L’utilisateur annule la réservation.
+  - Transition vers Terminee : Le séjour est terminé.
+* Terminee : Le séjour est terminé, la réservation est close. Une nouvelle réservation peut être initiée.
+* Annulee : La réservation a été annulée. Une nouvelle réservation peut être initiée.
+
+
+
 
 
 
