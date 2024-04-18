@@ -61,7 +61,7 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 | Le cours est disponible à la réservation.                            |   T    |   T    |   F    |  
 | Il y a des places disponibles dans le cours.                         |   T    |   F    |   F    |
 
-| Préconditions                                                        | Test 1 | Test 2 | Test 3 |                          
+| Postconditions                                                       | Test 1 | Test 2 | Test 3 |                          
 |----------------------------------------------------------------------|--------|--------|--------|
 | Réservation effectuée                                                |   T    |   F    |   F    |
 | Confirmation envoyée au client.                                      |   T    |   F    |   F    |
