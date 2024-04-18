@@ -142,15 +142,15 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 
 ## Aspect Statique : 
-### diagramme de classe : 
-![diagramme_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a26df161-63a6-4ecd-b1ea-9c9dbd7f1123)
+### diagramme de classe Raffiné (Conception Detaillé): 
+![diagramme_classe_raffine](https://github.com/jerbi2026/Auto_ecole/assets/116197682/51bd6c7d-810e-407e-8427-25db0f1ea843)
 
 
 ### Description textuelle du diagramme de classe
 #### Classes:
 
 ##### Reservation:
-oid: Identifiant unique de la réservation
+id: Identifiant unique de la réservation
 dateReservation: Date de la réservation
 cours: Cours réservé
 eleve: Élève qui a effectué la réservation
@@ -234,6 +234,38 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 ### Diagramme de sequence reserver un cours
 ![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/162ab706-aba2-4ee9-99f2-36e40f3b82d1)
+
+
+## Conception Detaillé : 
+### un diagramme de machine à états de la classe Evaluation:
+![diagramme_evaluation](https://github.com/jerbi2026/Auto_ecole/assets/116197682/800d1c4f-5089-4d8b-9417-0f26344b7853)
+
+* EnAttente : L’état initial lorsque l’évaluation est créée. Le système attend que l’évaluation soit effectuée.
+   - Transition vers EnCours : Le paiement est accepté.
+   - Transition vers Annulee : L’utilisateur demande l’annulation de l’évaluation.
+* EnCours : L’évaluation est en cours. Des actions telles que la saisie des notes et la rédaction de la description peuvent être effectuées.
+   - Transition vers EnAttente : L’utilisateur annule l’évaluation.
+   - Transition vers Terminee : L’évaluation est terminée.
+* Terminee : L’évaluation est terminée. Une nouvelle évaluation peut être initiée.
+* Annulee : L’évaluation a été annulée. Une nouvelle évaluation peut être initiée.
+
+### un diagramme de machine à états de la classe Reservation:
+![diagramme_reservations](https://github.com/jerbi2026/Auto_ecole/assets/116197682/2ceeb9aa-0435-4bf0-aab9-4e36ff3b8788)
+
+* EnAttente : L’état initial lorsque la réservation est créée. Le système attend le paiement.
+  - Transition vers EnCours : Le paiement est accepté.
+  - Transition vers Annulee : L’utilisateur demande l’annulation de la réservation.
+* EnCours : La réservation est active, le paiement a été accepté. Des actions telles que la modification ou l’annulation peuvent être effectuées.
+  - Transition vers EnAttente : L’utilisateur annule la réservation.
+  - Transition vers Terminee : Le séjour est terminé.
+* Terminee : Le séjour est terminé, la réservation est close. Une nouvelle réservation peut être initiée.
+* Annulee : La réservation a été annulée. Une nouvelle réservation peut être initiée.
+
+
+
+
+
+
 
 
 
