@@ -41,26 +41,38 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 ## Planification du premier sprint
 
-### Préconditions :
-- L’internaute a accès à une connexion internet
-- Le site web de l’auto-école est disponible et accessible
-
-### Postconditions :
-- L’internaute a consulté avec succès les différentes offres proposés par l’auto-école
-- Le site web de l’auto-école reste accessible pour l’internaute afin de poursuivre sa navigation ou d’effectuer d’autres actions
-
-
 ### Table de décision des tests de validation  :
-#### Consulter les informations sur l’auto-école :
+#### Réserver un cours:
+##### Préconditions :
+- Le client est inscrit auprès de l'auto-école.
+- Le cours est disponible à la réservation.
+- Il y a des places disponibles dans le cours.
 
-| Fonctionnalités                                                      | Test 1 | Test 2 | Test 3  | Test 4|
-|----------------------------------------------------------------------|--------|--------|--------|--------|
-| Accès à une connexion Internet                                       |   T    |   T    |   T    |   T    |
-| Site web de l'auto-école disponible et accessible                    |   T    |   T    |   T    |    T   |
-| Consultation des informations sur l'auto-école                       |   T    |   T    |   T    |    F   |
-| Consultation des offres et des tarifs                                |   T    |   T    |   F    |   F    |
-| Création d'un compte sur le site web de l'auto-école                 |   T    |   F    |   F    |   F    |
-|Nombre de jeux de tests                                               | 2      | 2*n    | 1      |   1    |
+##### Postconditions :
+- La réservation du cours est effectuée avec succès.
+- Une confirmation de réservation est envoyée au client.
+- Le nombre de places disponibles dans le cours est mis à jour.
+
+##### table de décision
+
+| Préconditions                                                        | Test 1 | Test 2 | Test 3 |              
+|----------------------------------------------------------------------|--------|--------|--------|
+| Le client est inscrit                                                |   T    |   T    |   T    |
+| Le cours est disponible à la réservation.                            |   T    |   T    |   F    |  
+| Il y a des places disponibles dans le cours.                         |   T    |   F    |   F    |
+
+| Préconditions                                                        | Test 1 | Test 2 | Test 3 |                          
+|----------------------------------------------------------------------|--------|--------|--------|
+| Réservation effectuée                                                |   T    |   F    |   F    |
+| Confirmation envoyée au client.                                      |   T    |   F    |   F    |
+| Mise à jour des places disponibles.                                  |   T    |   F    |   F    | 
+
+##### diagramme de test 
+![reserver_cours](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a9863611-1c84-4765-9716-1ff9f3ea2cc8)
+
+
+
+
 
 #### Consulter les offres et les tarifs  :
 
