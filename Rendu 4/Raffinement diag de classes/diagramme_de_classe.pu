@@ -1,0 +1,171 @@
+@startuml
+
+abstract class Personne {
+    # nom: String
+    # prenom: String
+    # email: String
+    # mop: String
+  
+    + s'authentifier(nom:String,mop:String) : boolean 
+    + consulterInformations(): String
+    + modifierInformations(): void
+
+    inv nom_non_vide: nom <> ""
+    inv prenom_non_vide: prenom <> ""
+}
+
+class Instructeur<< Role >> {
+    - id_instructeur : int
+
+    - consulterInformations(): String
+    - modifierInformations(): void
+     + consulterCours(): List<Cours>
+    + creerCours(Cours: Cours): void
+    + modifierCours(Cours: Cours): void
+    + supprimerCours(Cours: Cours): void
+
+    inv id_instructeur_positif: id_instructeur > 0
+}
+
+class Admin << Role >>{
+    - id_manager : int
+
+    
+    + consulterEleves(): List<Eleve>
+    + creerEleve(eleve: Eleve): void
+    + modifierEleve(eleve: Eleve): void
+    + supprimerEleve(eleve: Eleve): void
+
+    + consulterInstructeur(): List<Instructeur>
+    + creerInstructeur(Instructeur: Instructeur): void
+    + modifierInstructeur(Instructeur: Instructeur): void
+    + supprimerInstructeur(Instructeur: Instructeur): void
+
+    inv id_manager_positif: id_manager > 0
+}
+
+class Eleve << Role >>{
+    - id_eleve : int
+    - progression: String
+    - listeCours: List<Cours>
+
+    + consulterInformations(): String
+    + modifierInformations(): void
+    + sInscrireCours(cours: Cours): void
+    + suivreCours(cours: Cours): void
+
+    inv id_eleve_positif: id_eleve > 0
+}
+
+class Cours << Ressource >>{
+    - id: int
+    - dateDebut: Date
+    - dateFin: Date
+    - nomCours: String
+    - id_instructeur: int
+    - listeEleves: List<Eleve>
+    - listeEvaluations: List<Evaluation>
+    - horraires: Horraire
+
+    + annulerCours(): void
+    + modifierCours(): void
+
+     inv id_positif: id > 0
+}
+
+class Evaluation << Ressource >>{
+    - idEval: int
+    - dateEval: Date
+    - description: String
+    - note: int
+    - id_eleve : int
+
+    + ajouterNote(eleve: Eleve, note: int): void
+    + consulterNotes(): List<int>
+
+    inv idEval_positif: idEval > 0
+}
+
+
+class Reservation << Ressource >>{
+    - id: int
+    - eleve: Eleve
+    - cours: Cours
+    - dateReservation: Date
+
+    + ajouterReservation(Reservation : Reservation): void
+    + supprimerReservation(Reservation : Reservation): void
+    + modifierReservation(Reservation : Reservation):void
+    + annulerReservation(): void
+
+    inv id_positif: id > 0
+}
+
+
+class ConnexionDemande << Utilitaire >>{
+    - email: String
+    - motDePasse: String
+
+    + authentifier(email: String,motDePasse: String): void
+    + reinitialiserMotDePasse(): boolean
+
+    inv email_non_vide: email <> ""
+    inv motDePasse_non_vide: motDePasse <> ""
+}
+
+class Horraire << Ressource >>{
+    - id: int
+    - jour: String
+    - heureDebut: String
+    - heureFin: String
+
+    + creerHorraire(jour: String, heureDebut: String, heureFin: String): Horraire
+    + lireHorraire(id: int): Horraire
+    + mettreAJourHorraire(id: int, jour: String, heureDebut: String, heureFin: String): void
+    + supprimerHorraire(id: int): void
+
+    inv id_positif: id > 0
+}
+
+
+
+class Contact  << Utilitaire >>{
+    - nom: String
+    - prenom: String
+    - email: String
+    - message: String
+
+    + envoyerMessage(Contact : Contact): void
+    + ConsulterMessage(): List<Contact>
+
+     inv nom_non_vide: nom <> ""
+    inv prenom_non_vide: prenom <> ""
+    inv email_non_vide: email <> ""
+    inv message_non_vide: message <> ""
+
+}
+
+note "La classe ConnexionDemande gère les demandes de connexion des utilisateurs et permet l'authentification ainsi que la réinitialisation des mots de passe." as NoteConnexionDemande
+note "La classe Reservation gère les réservations des élèves pour les cours." as NoteReservation
+note "La classe Evaluation gère les évaluations des élèves dans le cadre des cours." as NoteEvaluation
+
+Personne <|-- Instructeur
+Personne <|-- Eleve
+Personne <|-- Admin
+Reservation "1" -- "1" Admin : "gerer"
+Instructeur "1" -- "*" Cours : "enseigne"
+Eleve "1" -- "*" Cours : "suit"
+Admin "1" -- "*" Cours : "gerer"
+Evaluation "1" -- "1" Eleve : "est evalué"
+Evaluation "1" -- "*" Cours : "appartient à"
+Admin "1" -- "*" Instructeur : "consulte"
+Admin "1" -- "*" Eleve : "consulte"
+Horraire "1" -- "*" Cours : "appartient à"
+Contact "0..*" -- "1" Admin : "est géré par"
+
+NoteConnexionDemande -- ConnexionDemande
+NoteReservation -- Reservation
+NoteEvaluation -- Evaluation
+
+
+@enduml
