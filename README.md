@@ -1,4 +1,4 @@
-![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/1dae6ac1-c824-4258-9346-afc2f7022763)# Auto_ecole 🚓
+# Auto_ecole 🚓
 Ce dépôt GitHub contient une conception détaillée pour une application d'auto-école. L'objectif principal de cette application est de fournir une plateforme conviviale et efficace pour les auto-écoles, les instructeurs et les étudiants.
 ## Fonctionnalités prévues ⚙️:
 
