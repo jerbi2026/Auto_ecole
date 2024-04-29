@@ -1,7 +1,9 @@
 @startuml
-participant GestionnaireCompte
-participant Auto_ecole
-participant Internaute
+title Creer un compte
+
+actor ":Personne" as Internaute
+participant ":GestionnaireCompte" as GestionnaireCompte
+participant ":Auto_ecole" as Auto_ecole
 
 Internaute->Auto_ecole: accederSiteWeb()
 Auto_ecole->Internaute: envoyerPageHome(pageHome)

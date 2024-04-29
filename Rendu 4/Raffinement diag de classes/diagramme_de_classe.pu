@@ -129,6 +129,8 @@ class Horraire << Ressource >>{
 
 
 
+
+
 class Contact  << Utilitaire >>{
     - nom: String
     - prenom: String
@@ -145,9 +147,31 @@ class Contact  << Utilitaire >>{
 
 }
 
+
+class AutoEcole {
+    + consulterInformations(): String
+    + gererCours(): void
+    + consulterEleves(): List<Eleve>
+    + creerEleve(eleve: Eleve): void
+    + modifierEleve(eleve: Eleve): void
+    + supprimerEleve(eleve: Eleve): void
+    + consulterInstructeur(): List<Instructeur>
+    + creerInstructeur(Instructeur: Instructeur): void
+    + modifierInstructeur(Instructeur: Instructeur): void
+    + supprimerInstructeur(Instructeur: Instructeur): void
+    + consulterReservations(): List<Reservation>
+    + annulerReservation(reservation: Reservation): void
+    + consulterConnexionsDemandes(): List<ConnexionDemande>
+    + reinitialiserMotDePasse(demande: ConnexionDemande): boolean
+    + consulterContacts(): List<Contact>
+    + envoyerMessage(contact: Contact): void
+}
+
+
 note "La classe ConnexionDemande gère les demandes de connexion des utilisateurs et permet l'authentification ainsi que la réinitialisation des mots de passe." as NoteConnexionDemande
 note "La classe Reservation gère les réservations des élèves pour les cours." as NoteReservation
 note "La classe Evaluation gère les évaluations des élèves dans le cadre des cours." as NoteEvaluation
+note "La classe AutoEcole agit comme une interface centralisée pour la gestion de toutes les opérations liées à une auto-école. Elle fournit des méthodes pour consulter et gérer les informations des élèves, des instructeurs, des cours, des réservations, des demandes de connexion et des contacts." as AutoEcoleNote
 
 Personne <|-- Instructeur
 Personne <|-- Eleve
@@ -166,6 +190,11 @@ Contact "0..*" -- "1" Admin : "est géré par"
 NoteConnexionDemande -- ConnexionDemande
 NoteReservation -- Reservation
 NoteEvaluation -- Evaluation
+AutoEcoleNote -- AutoEcole
 
+AutoEcole -- "*" Personne : "contient"
+AutoEcole -- Reservation : "contient"
+AutoEcole -- ConnexionDemande : "contient"
+AutoEcole -- Contact : "contient"
 
 @enduml

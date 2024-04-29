@@ -119,6 +119,25 @@ class Contact{
 
 }
 
+class AutoEcole {
+    + consulterInformations(): String
+    + gererCours(): void
+    + consulterEleves(): List<Eleve>
+    + creerEleve(eleve: Eleve): void
+    + modifierEleve(eleve: Eleve): void
+    + supprimerEleve(eleve: Eleve): void
+    + consulterInstructeur(): List<Instructeur>
+    + creerInstructeur(Instructeur: Instructeur): void
+    + modifierInstructeur(Instructeur: Instructeur): void
+    + supprimerInstructeur(Instructeur: Instructeur): void
+    + consulterReservations(): List<Reservation>
+    + annulerReservation(reservation: Reservation): void
+    + consulterConnexionsDemandes(): List<ConnexionDemande>
+    + reinitialiserMotDePasse(demande: ConnexionDemande): boolean
+    + consulterContacts(): List<Contact>
+    + envoyerMessage(contact: Contact): void
+}
+
 Personne <|-- Instructeur
 Personne <|-- Eleve
 Personne <|-- Admin
@@ -133,5 +152,9 @@ Admin "1" -- "*" Eleve : "consulte"
 Horraire "1" -- "*" Cours : "appartient à"
 Contact "0..*" -- "1" Admin : "est géré par"
 
+AutoEcole -- "*" Personne : "contient"
+AutoEcole -- Reservation : "contient"
+AutoEcole -- ConnexionDemande : "contient"
+AutoEcole -- Contact : "contient"
 
 @enduml

@@ -1,7 +1,9 @@
 @startuml
-participant Eleve
-participant AutoEcole
-participant Reservations
+title reserver cours
+
+actor ":Eleve" as Eleve
+participant ":Reservations" as Reservations
+participant ":Auto_ecole" as Auto_ecole
 
 Eleve->AutoEcole: accederPageReservationCours()
 
