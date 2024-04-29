@@ -143,12 +143,45 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 ## Aspect Statique : 
 ### diagramme de classe Raffiné (Conception Detaillé): 
-![diagramme_classe_raffine](https://github.com/jerbi2026/Auto_ecole/assets/116197682/51bd6c7d-810e-407e-8427-25db0f1ea843)
-
+![diagramme_classe_raffine](https://github.com/jerbi2026/Auto_ecole/assets/116197682/164a0c71-659d-456d-9bb2-3d326a67b15c)
 
 ### Description textuelle du diagramme de classe
 #### Classes:
+##### Auto ecole:
+La classe AutoEcole représente l'entité principale qui gère toutes les opérations liées à une auto-école. Elle agit comme une interface centrale pour interagir avec les différentes entités de l'auto-école, telles que les élèves, les instructeurs, les réservations, les demandes de connexion, et les contacts.
 
+###### consulterInformations(): String
+Cette méthode permet de consulter les informations générales de l'auto-école, telles que son nom, son adresse et ses coordonnées.
+###### gererCours(): void
+Cette méthode permet de gérer les cours proposés par l'auto-école, y compris la création, la modification et l'annulation des cours.
+###### consulterEleves(): List<Eleve>
+Cette méthode renvoie la liste de tous les élèves inscrits à l'auto-école.
+###### creerEleve(eleve: Eleve): void
+Cette méthode permet de créer un nouveau profil d'élève dans le système de l'auto-école.
+###### modifierEleve(eleve: Eleve): void
+Cette méthode permet de modifier les informations d'un élève existant dans le système de l'auto-école.
+###### supprimerEleve(eleve: Eleve): void
+Cette méthode permet de supprimer le profil d'un élève du système de l'auto-école.
+###### consulterInstructeur(): List<Instructeur>
+Cette méthode renvoie la liste de tous les instructeurs travaillant pour l'auto-école.
+###### creerInstructeur(instructeur: Instructeur): void
+Cette méthode permet de créer un nouveau profil d'instructeur dans le système de l'auto-école.
+###### modifierInstructeur(instructeur: Instructeur): void
+Cette méthode permet de modifier les informations d'un instructeur existant dans le système de l'auto-école.
+###### supprimerInstructeur(instructeur: Instructeur): void
+Cette méthode permet de supprimer le profil d'un instructeur du système de l'auto-école.
+###### consulterReservations(): List<Reservation>
+Cette méthode renvoie la liste de toutes les réservations de cours effectuées par les élèves.
+###### annulerReservation(reservation: Reservation): void
+Cette méthode permet d'annuler une réservation de cours effectuée par un élève.
+###### consulterConnexionsDemandes(): List<ConnexionDemande>
+Cette méthode renvoie la liste de toutes les demandes de connexion au système de l'auto-école.
+###### reinitialiserMotDePasse(demande: ConnexionDemande): boolean
+Cette méthode permet de réinitialiser le mot de passe d'un utilisateur en fonction d'une demande de réinitialisation.
+###### consulterContacts(): List<Contact>
+Cette méthode renvoie la liste de tous les contacts reçus par l'auto-école via son site web ou d'autres canaux de communication.
+###### envoyerMessage(contact: Contact): void
+Cette méthode permet d'envoyer une réponse à un contact spécifié, par exemple pour répondre à une demande d'information ou de support.
 ##### Reservation:
 id: Identifiant unique de la réservation
 dateReservation: Date de la réservation
@@ -227,13 +260,13 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 ## Aspect dynamique
 ### Diagramme de sequence creer compte
-![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/6b8932ce-3fc9-4200-ae0c-d9e5a2f35795)
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/36dacc11-cee8-47ff-8a2c-2d13f36d45d6)
 
 ### Diagramme de sequence s'authentifier
-![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/ba9dfc1f-02f9-4762-ba57-f3a0a6d8aa13)
+![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/eca20094-9a36-4910-aed0-6a7dd268b541)
 
 ### Diagramme de sequence reserver un cours
-![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/162ab706-aba2-4ee9-99f2-36e40f3b82d1)
+![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/7cd2c89c-3bed-4230-b253-8b734430924e)
 
 
 ## Conception Detaillé : 
@@ -263,7 +296,8 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 
 ## Raffinement de digramme de classe : 
-![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/6278b4c4-a57f-452f-9a61-a190717f1efd)
+![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/18d4bf42-fd12-4b8f-a862-cc86b054c3ad)
+
 
 - Modification de visibilité
 - Ajout de commentaires
