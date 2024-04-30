@@ -143,7 +143,7 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 ## Aspect Statique : 
 ### diagramme de classe Raffiné (Conception Detaillé): 
-![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/135c94ca-b9d0-4cf5-9ad5-38b59e476891)
+![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/a7c79bef-a768-4ce9-b582-0cffbc9b911f)
 
 
 ### Description textuelle du diagramme de classe
