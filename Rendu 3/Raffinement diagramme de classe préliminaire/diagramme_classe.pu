@@ -152,9 +152,9 @@ Admin "1" -- "*" Eleve : "consulte"
 Horraire "1" -- "*" Cours : "appartient à"
 Contact "0..*" -- "1" Admin : "est géré par"
 
-AutoEcole -- "*" Personne : "contient"
-AutoEcole -- "1..*" Reservation : "contient"
-AutoEcole -- "1..*" ConnexionDemande : "contient"
-AutoEcole -- "1..*" Contact : "contient"
+AutoEcole o-- "*" Personne : "contient"
+AutoEcole o-- "1..*" Reservation : "contient"
+AutoEcole o-- "1..*" ConnexionDemande : "contient"
+AutoEcole o-- "1..*" Contact : "contient"
 
 @enduml
