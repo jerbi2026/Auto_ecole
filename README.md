@@ -261,13 +261,13 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 ## Aspect dynamique
 ### Diagramme de sequence creer compte
-![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/36dacc11-cee8-47ff-8a2c-2d13f36d45d6)
+![creer_compte](https://github.com/jerbi2026/Auto_ecole/assets/116197682/5f08782c-6c54-489c-87f1-03f454ddc1f0)
 
 ### Diagramme de sequence s'authentifier
-![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/eca20094-9a36-4910-aed0-6a7dd268b541)
+![s'authentifier](https://github.com/jerbi2026/Auto_ecole/assets/116197682/5869b912-9475-49ef-889b-aa68ef402337)
 
 ### Diagramme de sequence reserver un cours
-![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/7cd2c89c-3bed-4230-b253-8b734430924e)
+![reserver_cour](https://github.com/jerbi2026/Auto_ecole/assets/116197682/5cd39938-40f7-4efd-af5b-edbe2a5ee180)
 
 
 ## Conception Detaillé : 
