@@ -93,15 +93,15 @@ class ConnexionDemande {
 
 
 interface AutoEcole {
-    + creerEleve(nom: String, prenom: String, email: String, mop: String): Eleve
+    + Eleve(nom: String, prenom: String, email: String, mop: String): Eleve
     + supprimerEleve(eleve: Eleve): void
-    + creerInstructeur(nom: String, prenom: String, email: String, mop: String): Instructeur
+    + Instructeur(nom: String, prenom: String, email: String, mop: String): Instructeur
     + supprimerInstructeur(instructeur: Instructeur): void
-    + creerReservation(eleve: Eleve, cours: Cours, dateReservation: Date): Reservation
+    + Reservation(eleve: Eleve, cours: Cours, dateReservation: Date): Reservation
     + annulerReservation(reservation: Reservation): void
-    + creerConnexionDemande(email: String, motDePasse: String): ConnexionDemande
+    + ConnexionDemande(email: String, motDePasse: String): ConnexionDemande
     + supprimerConnexionDemande(demande: ConnexionDemande): void
-    + envoyerMessage(nom: String, prenom: String, email: String, message: String): Contact
+    + Contact(nom: String, prenom: String, email: String, message: String): Contact
 }
 
 class Contact{
