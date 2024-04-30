@@ -297,7 +297,7 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 
 ## Raffinement de digramme de classe : 
-![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/556878f8-ad32-40a0-ab6e-9a187e34acec)
+![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/7731ec72-fac2-445e-aac1-9398b058bb1b)
 
 - Modification de visibilité
 - Ajout de commentaires
