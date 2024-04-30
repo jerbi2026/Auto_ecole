@@ -143,23 +143,16 @@ class Contact  << Utilitaire >>{
 }
 
 
-class AutoEcole {
-    + consulterInformations(): String
-    + gererCours(): void
-    + consulterEleves(): List<Eleve>
-    + creerEleve(eleve: Eleve): void
-    + modifierEleve(eleve: Eleve): void
+interface AutoEcole {
+    + creerEleve(nom: String, prenom: String, email: String, mop: String): Eleve
     + supprimerEleve(eleve: Eleve): void
-    + consulterInstructeur(): List<Instructeur>
-    + creerInstructeur(Instructeur: Instructeur): void
-    + modifierInstructeur(Instructeur: Instructeur): void
-    + supprimerInstructeur(Instructeur: Instructeur): void
-    + consulterReservations(): List<Reservation>
+    + creerInstructeur(nom: String, prenom: String, email: String, mop: String): Instructeur
+    + supprimerInstructeur(instructeur: Instructeur): void
+    + creerReservation(eleve: Eleve, cours: Cours, dateReservation: Date): Reservation
     + annulerReservation(reservation: Reservation): void
-    + consulterConnexionsDemandes(): List<ConnexionDemande>
-    + reinitialiserMotDePasse(demande: ConnexionDemande): boolean
-    + consulterContacts(): List<Contact>
-    + envoyerMessage(contact: Contact): void
+    + creerConnexionDemande(email: String, motDePasse: String): ConnexionDemande
+    + supprimerConnexionDemande(demande: ConnexionDemande): void
+    + envoyerMessage(nom: String, prenom: String, email: String, message: String): Contact
 }
 
 

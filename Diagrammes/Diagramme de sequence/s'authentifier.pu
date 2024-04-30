@@ -1,0 +1,23 @@
+@startuml
+
+actor ":Eleve" as Eleve
+participant ":Auto_ecole" as Auto_ecole
+participant ":ConnexionDemande" as ConnexionDemande
+
+
+Eleve->Auto_ecole: accederPageConnexion()
+
+Eleve->Auto_ecole: saisirIdentifiantMotDePasse(identifiant, motDePasse)
+
+Auto_ecole->ConnexionDemande: authentifierEleve(identifiant, motDePasse)
+
+ConnexionDemande->Eleve: verifierIdentifiantMotDePasseEleve(identifiant, motDePasse)
+
+alt
+    ConnexionDemande->Auto_ecole: authentificationEleveReussie(eleve)
+    Auto_ecole->Eleve: authentificationReussie(eleve)
+else
+    ConnexionDemande->Auto_ecole: authentificationEleveEchouee()
+    Auto_ecole->Eleve: authentificationEchouee()
+end
+@enduml

@@ -1,29 +1,33 @@
 @startuml
 
 abstract class Personne {
-    + nom: String
-    + prenom: String
-    + email: String
-    + mop: String
+    # nom: String
+    # prenom: String
+    # email: String
+    # mop: String
   
     + s'authentifier(nom:String,mop:String) : boolean 
     + consulterInformations(): String
     + modifierInformations(): void
+
+    
 }
 
-class Instructeur {
-    + id_instructeur : int
+class Instructeur<< Role >> {
+    - id_instructeur : int
 
-    + consulterInformations(): String
-    + modifierInformations(): void
+    - consulterInformations(): String
+    - modifierInformations(): void
      + consulterCours(): List<Cours>
     + creerCours(Cours: Cours): void
     + modifierCours(Cours: Cours): void
     + supprimerCours(Cours: Cours): void
+
+    
 }
 
-class Admin {
-    + id_manager : int
+class Admin << Role >>{
+    - id_manager : int
 
     
     + consulterEleves(): List<Eleve>
@@ -35,87 +39,106 @@ class Admin {
     + creerInstructeur(Instructeur: Instructeur): void
     + modifierInstructeur(Instructeur: Instructeur): void
     + supprimerInstructeur(Instructeur: Instructeur): void
+
 }
 
-class Eleve {
-    + id_eleve : int
-    + progression: String
-    + listeCours: List<Cours>
+class Eleve << Role >>{
+    - id_eleve : int
+    - progression: String
+    - listeCours: List<Cours>
 
     + consulterInformations(): String
     + modifierInformations(): void
     + sInscrireCours(cours: Cours): void
     + suivreCours(cours: Cours): void
+
+  
 }
 
-class Cours {
-    + id: int
-    + dateDebut: Date
-    + dateFin: Date
-    + nomCours: String
-    + id_instructeur: int
-    + listeEleves: List<Eleve>
-    + listeEvaluations: List<Evaluation>
-    + horraires: Horraire
+class Cours << Ressource >>{
+    - id: int
+    - dateDebut: Date
+    - dateFin: Date
+    - nomCours: String
+    - id_instructeur: int
+    - listeEleves: List<Eleve>
+    - listeEvaluations: List<Evaluation>
+    - horraires: Horraire
 
     + annulerCours(): void
     + modifierCours(): void
+
+    
 }
 
-class Evaluation {
-    + idEval: int
-    + dateEval: Date
-    + description: String
-    + note: int
-    + id_eleve : int
+class Evaluation << Ressource >>{
+    - idEval: int
+    - dateEval: Date
+    - description: String
+    - note: int
+    - id_eleve : int
 
     + ajouterNote(eleve: Eleve, note: int): void
     + consulterNotes(): List<int>
+
+    
 }
 
 
-class Reservation {
-    + id: int
-    + eleve: Eleve
-    + cours: Cours
-    + dateReservation: Date
+class Reservation << Ressource >>{
+    - id: int
+    - eleve: Eleve
+    - cours: Cours
+    - dateReservation: Date
 
     + ajouterReservation(Reservation : Reservation): void
     + supprimerReservation(Reservation : Reservation): void
     + modifierReservation(Reservation : Reservation):void
     + annulerReservation(): void
+
+   
 }
 
-class ConnexionDemande {
-    + email: String
-    + motDePasse: String
+
+class ConnexionDemande << Utilitaire >>{
+    - email: String
+    - motDePasse: String
 
     + authentifier(email: String,motDePasse: String): void
     + reinitialiserMotDePasse(): boolean
+
+    inv email_non_vide: email <> ""
+    inv motDePasse_non_vide: motDePasse <> ""
 }
 
-class Horraire {
-    + id: int
-    + jour: String
-    + heureDebut: String
-    + heureFin: String
+class Horraire << Ressource >>{
+    - id: int
+    - jour: String
+    - heureDebut: String
+    - heureFin: String
 
     + creerHorraire(jour: String, heureDebut: String, heureFin: String): Horraire
     + lireHorraire(id: int): Horraire
     + mettreAJourHorraire(id: int, jour: String, heureDebut: String, heureFin: String): void
     + supprimerHorraire(id: int): void
+
+    
 }
 
 
 
-class Contact{
-    + nom: String
-    + prenom: String
-    + email: String
-    + message: String
+
+
+class Contact  << Utilitaire >>{
+    - nom: String
+    - prenom: String
+    - email: String
+    - message: String
 
     + envoyerMessage(Contact : Contact): void
     + ConsulterMessage(): List<Contact>
+
+    
 
 }
 
@@ -132,6 +155,18 @@ interface AutoEcole {
     + envoyerMessage(nom: String, prenom: String, email: String, message: String): Contact
 }
 
+
+note "La classe ConnexionDemande gère les demandes de connexion des utilisateurs et permet l'authentification ainsi que la réinitialisation des mots de passe." as NoteConnexionDemande
+note "La classe Reservation gère les réservations des élèves pour les cours." as NoteReservation
+note "La classe Evaluation gère les évaluations des élèves dans le cadre des cours." as NoteEvaluation
+note "La classe AutoEcole agit comme une interface centralisée pour la gestion de toutes les opérations liées à une auto-école. Elle fournit des méthodes pour consulter et gérer les informations des élèves, des instructeurs, des cours, des réservations, des demandes de connexion et des contacts." as AutoEcoleNote
+
+
+note "Invariant : Chaque réservation doit être associée à un élève et à un cours valides." as reservation_invariant
+note "Invariant : Chaque demande de connexion doit avoir une adresse e-mail non vide." as connexion_demande_invariant
+note "Invariant : Chaque personne doit avoir un nom et un prénom non vides." as personne_invariant
+
+
 Personne <|-- Instructeur
 Personne <|-- Eleve
 Personne <|-- Admin
@@ -145,6 +180,17 @@ Admin "1" -- "*" Instructeur : "consulte"
 Admin "1" -- "*" Eleve : "consulte"
 Horraire "1" -- "*" Cours : "appartient à"
 Contact "0..*" -- "1" Admin : "est géré par"
+
+NoteConnexionDemande -- ConnexionDemande
+NoteReservation -- Reservation
+NoteEvaluation -- Evaluation
+AutoEcoleNote -- AutoEcole
+
+reservation_invariant -- Reservation
+connexion_demande_invariant -- ConnexionDemande
+personne_invariant -- Personne
+
+
 
 AutoEcole o-- "*" Personne : "contient"
 AutoEcole o-- "1..*" Reservation : "contient"

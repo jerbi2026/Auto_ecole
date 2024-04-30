@@ -1,0 +1,31 @@
+@startuml
+title Creer un compte
+
+actor ":Personne" as Internaute
+participant ":GestionnaireCompte" as GestionnaireCompte
+participant ":Auto_ecole" as Auto_ecole
+
+Internaute->Auto_ecole: accederSiteWeb()
+Auto_ecole->Internaute: envoyerPageHome(pageHome)
+
+alt
+    Internaute->Auto_ecole: consulterInformationsAutoEcole(idAutoEcole)
+    Auto_ecole->Auto_ecole: requeteInformationsAutoEcole(idAutoEcole)
+    Auto_ecole->Internaute: envoyerInformationsAutoEcole(informationsAutoEcole)
+else
+    Internaute->Auto_ecole: consulterOffresEtTarifs()
+    Auto_ecole->Auto_ecole: requeteOffresEtTarifs()
+    Auto_ecole->Internaute: envoyerOffresEtTarifs(offresEtTarifs)
+end
+
+Internaute->Auto_ecole: creerCompte(nom, email, motDePasse)
+Auto_ecole->GestionnaireCompte: requeteCreationCompte(nom, email, motDePasse)
+GestionnaireCompte->Auto_ecole: verifierInformationsCompte(nom, email, motDePasse)
+alt
+    GestionnaireCompte->Auto_ecole: creerCompte(compte)
+    Auto_ecole->Internaute: compteCree(compte)
+else
+    GestionnaireCompte->Auto_ecole: erreurCreationCompte()
+    Auto_ecole->Internaute: erreurCreationCompte()
+end
+@enduml

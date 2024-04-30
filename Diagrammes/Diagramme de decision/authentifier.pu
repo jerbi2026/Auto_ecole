@@ -1,0 +1,24 @@
+@startuml
+title Diagramme de décision - S'authentifier
+
+if (Utilisateur a accès à une connexion internet ?) then (Oui)
+    :Afficher page de connexion;
+    if (Utilisateur fournit des informations d'identification valides ?) then (Oui)
+        :Vérifier les informations d'identification;
+        if (Informations d'identification valides ?) then (Oui)
+            :Authentifier l'utilisateur;
+            if (Accès accordé aux fonctionnalités restreintes ?) then (Oui)
+                :Rediriger vers la page d'accueil;
+            else (Non)
+                :Afficher message d'erreur "Accès non autorisé";
+            endif
+        else (Non)
+            :Afficher message d'erreur "Informations d'identification incorrectes";
+        endif
+    else (Non)
+        :Afficher message d'erreur "Informations d'identification manquantes";
+    endif
+else (Non)
+    :Afficher message d'erreur "Connexion internet non disponible";
+endif
+@enduml
