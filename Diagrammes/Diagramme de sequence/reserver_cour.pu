@@ -5,19 +5,19 @@ actor ":Eleve" as Eleve
 participant ":Reservations" as Reservations
 participant ":Auto_ecole" as Auto_ecole
 
-Eleve->AutoEcole: accederPageReservationCours()
+Eleve->Auto_ecole: accederPageReservationCours()
 
-Eleve->AutoEcole: selectionnerCours(idCours)
+Eleve->Auto_ecole: selectionnerCours(idCours)
 
-AutoEcole->Reservations: reserverCours(idEleve, idCours)
+Auto_ecole->Reservations: reserverCours(idEleve, idCours)
 
 Reservations->Reservations: verifierDisponibiliteCours(idCours)
 
 alt
-    Reservations->AutoEcole: reservationCoursReussie(reservation)
-    AutoEcole->Eleve: reservationReussie(reservation)
+    Reservations->Auto_ecole: reservationCoursReussie(reservation)
+    Auto_ecole->Eleve: reservationReussie(reservation)
 else
-    Reservations->AutoEcole: reservationCoursEchouee(motif)
-    AutoEcole->Eleve: reservationEchouee(motif)
+    Reservations->Auto_ecole: reservationCoursEchouee(motif)
+    Auto_ecole->Eleve: reservationEchouee(motif)
 end
 @enduml
