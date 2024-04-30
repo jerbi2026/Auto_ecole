@@ -56,7 +56,7 @@ class Cours {
     + id_instructeur: int
     + listeEleves: List<Eleve>
     + listeEvaluations: List<Evaluation>
-    + horraires: Horraire
+    + horraires: String
 
     + annulerCours(): void
     + modifierCours(): void
@@ -91,17 +91,7 @@ class ConnexionDemande {
     + reinitialiserMotDePasse(): boolean
 }
 
-class Horraire {
-    + id: int
-    + jour: String
-    + heureDebut: String
-    + heureFin: String
 
-    + creerHorraire(jour: String, heureDebut: String, heureFin: String): Horraire
-    + lireHorraire(id: int): Horraire
-    + mettreAJourHorraire(id: int, jour: String, heureDebut: String, heureFin: String): void
-    + supprimerHorraire(id: int): void
-}
 
 class AutoEcole {
     + consulterInformations(): String
@@ -144,7 +134,6 @@ Evaluation "1" -- "1" Eleve : "est evalué"
 Evaluation "1" -- "*" Cours : "appartient à"
 Admin "1" -- "*" Instructeur : "consulte"
 Admin "1" -- "*" Eleve : "consulte"
-Horraire "1" -- "*" Cours : "appartient à"
 Contact "0..*" -- "1" Admin : "est géré par"
 AutoEcole -- "*" Personne : "contient"
 AutoEcole -- Reservation : "contient"

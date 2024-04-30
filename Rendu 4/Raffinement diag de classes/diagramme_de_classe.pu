@@ -10,8 +10,7 @@ abstract class Personne {
     + consulterInformations(): String
     + modifierInformations(): void
 
-    inv nom_non_vide: nom <> ""
-    inv prenom_non_vide: prenom <> ""
+    
 }
 
 class Instructeur<< Role >> {
@@ -24,7 +23,7 @@ class Instructeur<< Role >> {
     + modifierCours(Cours: Cours): void
     + supprimerCours(Cours: Cours): void
 
-    inv id_instructeur_positif: id_instructeur > 0
+    
 }
 
 class Admin << Role >>{
@@ -41,7 +40,6 @@ class Admin << Role >>{
     + modifierInstructeur(Instructeur: Instructeur): void
     + supprimerInstructeur(Instructeur: Instructeur): void
 
-    inv id_manager_positif: id_manager > 0
 }
 
 class Eleve << Role >>{
@@ -54,7 +52,7 @@ class Eleve << Role >>{
     + sInscrireCours(cours: Cours): void
     + suivreCours(cours: Cours): void
 
-    inv id_eleve_positif: id_eleve > 0
+  
 }
 
 class Cours << Ressource >>{
@@ -70,7 +68,7 @@ class Cours << Ressource >>{
     + annulerCours(): void
     + modifierCours(): void
 
-     inv id_positif: id > 0
+    
 }
 
 class Evaluation << Ressource >>{
@@ -83,7 +81,7 @@ class Evaluation << Ressource >>{
     + ajouterNote(eleve: Eleve, note: int): void
     + consulterNotes(): List<int>
 
-    inv idEval_positif: idEval > 0
+    
 }
 
 
@@ -98,7 +96,7 @@ class Reservation << Ressource >>{
     + modifierReservation(Reservation : Reservation):void
     + annulerReservation(): void
 
-    inv id_positif: id > 0
+   
 }
 
 
@@ -124,7 +122,7 @@ class Horraire << Ressource >>{
     + mettreAJourHorraire(id: int, jour: String, heureDebut: String, heureFin: String): void
     + supprimerHorraire(id: int): void
 
-    inv id_positif: id > 0
+    
 }
 
 
@@ -140,10 +138,7 @@ class Contact  << Utilitaire >>{
     + envoyerMessage(Contact : Contact): void
     + ConsulterMessage(): List<Contact>
 
-     inv nom_non_vide: nom <> ""
-    inv prenom_non_vide: prenom <> ""
-    inv email_non_vide: email <> ""
-    inv message_non_vide: message <> ""
+    
 
 }
 
@@ -173,6 +168,12 @@ note "La classe Reservation gère les réservations des élèves pour les cours.
 note "La classe Evaluation gère les évaluations des élèves dans le cadre des cours." as NoteEvaluation
 note "La classe AutoEcole agit comme une interface centralisée pour la gestion de toutes les opérations liées à une auto-école. Elle fournit des méthodes pour consulter et gérer les informations des élèves, des instructeurs, des cours, des réservations, des demandes de connexion et des contacts." as AutoEcoleNote
 
+
+note "Invariant : Chaque réservation doit être associée à un élève et à un cours valides." as reservation_invariant
+note "Invariant : Chaque demande de connexion doit avoir une adresse e-mail non vide." as connexion_demande_invariant
+note "Invariant : Chaque personne doit avoir un nom et un prénom non vides." as personne_invariant
+
+
 Personne <|-- Instructeur
 Personne <|-- Eleve
 Personne <|-- Admin
@@ -192,9 +193,15 @@ NoteReservation -- Reservation
 NoteEvaluation -- Evaluation
 AutoEcoleNote -- AutoEcole
 
-AutoEcole -- "*" Personne : "contient"
-AutoEcole -- Reservation : "contient"
-AutoEcole -- ConnexionDemande : "contient"
-AutoEcole -- Contact : "contient"
+reservation_invariant -- Reservation
+connexion_demande_invariant -- ConnexionDemande
+personne_invariant -- Personne
+
+
+
+AutoEcole o-- "*" Personne : "contient"
+AutoEcole o-- "1..*" Reservation : "contient"
+AutoEcole o-- "1..*" ConnexionDemande : "contient"
+AutoEcole o-- "1..*" Contact : "contient"
 
 @enduml

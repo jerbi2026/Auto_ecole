@@ -153,8 +153,8 @@ Horraire "1" -- "*" Cours : "appartient à"
 Contact "0..*" -- "1" Admin : "est géré par"
 
 AutoEcole -- "*" Personne : "contient"
-AutoEcole -- Reservation : "contient"
-AutoEcole -- ConnexionDemande : "contient"
-AutoEcole -- Contact : "contient"
+AutoEcole -- "1..*" Reservation : "contient"
+AutoEcole -- "1..*" ConnexionDemande : "contient"
+AutoEcole -- "1..*" Contact : "contient"
 
 @enduml
