@@ -143,7 +143,8 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
 
 ## Aspect Statique : 
 ### diagramme de classe Raffiné (Conception Detaillé): 
-![diagramme_classe_raffine](https://github.com/jerbi2026/Auto_ecole/assets/116197682/164a0c71-659d-456d-9bb2-3d326a67b15c)
+![diagramme_classe_raffine](https://github.com/jerbi2026/Auto_ecole/assets/116197682/621a47d7-f532-46d6-a10e-25680054c6fc)
+
 
 ### Description textuelle du diagramme de classe
 #### Classes:
@@ -296,12 +297,12 @@ Un administrateur peut créer un nouveau cours, y inscrire des élèves, affecte
 
 
 ## Raffinement de digramme de classe : 
-![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/18d4bf42-fd12-4b8f-a862-cc86b054c3ad)
-
+![diagramme_de_classe](https://github.com/jerbi2026/Auto_ecole/assets/116197682/14ec76ca-41de-4335-8ad8-9f86fc480d65)
 
 - Modification de visibilité
 - Ajout de commentaires
 - Ajout des invariants
+- Modification des associations
 
 ### Les attributs et opérations de chaque classe :
 ##### Personne :
